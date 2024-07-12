@@ -29,3 +29,9 @@
 *.sn*
 *.sa*
 *.sg1
+
+# Ignoring some common visual studio things
+.vs
+
+# Just a script I used to locate lines of code
+searcher.py
