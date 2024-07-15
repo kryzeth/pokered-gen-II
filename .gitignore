@@ -35,3 +35,6 @@
 
 # Just a script I used to locate lines of code
 searcher.py
+
+#Action replay codes to enable debug mode
+*.clt
