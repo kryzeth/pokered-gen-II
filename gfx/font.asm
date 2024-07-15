@@ -27,5 +27,5 @@ PokedexTileGraphicsEnd:
 WorldMapTileGraphics: INCBIN "gfx/town_map/town_map.2bpp"
 WorldMapTileGraphicsEnd:
 
-PlayerCharacterTitleGraphics: INCBIN "gfx/title/player_green.2bpp"
+PlayerCharacterTitleGraphics: INCBIN "gfx/title/player_title.2bpp"
 PlayerCharacterTitleGraphicsEnd:

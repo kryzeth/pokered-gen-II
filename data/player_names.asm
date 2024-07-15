@@ -1,9 +1,9 @@
-IF DEF(_RED)
+;IF DEF(_RED)
 DefaultNamesPlayer:
 	db   "NEW NAME"
-	next "RED"
-	next "ASH"
-	next "JACK"
+	next "GREEN"
+	next "LEAF"
+	next "AMANDA"
 	db   "@"
 
 DefaultNamesRival:
@@ -12,20 +12,20 @@ DefaultNamesRival:
 	next "GARY"
 	next "JOHN"
 	db   "@"
-ENDC
+;ENDC
 
-IF DEF(_BLUE)
-DefaultNamesPlayer:
-	db   "NEW NAME"
-	next "BLUE"
-	next "GARY"
-	next "JOHN"
-	db   "@"
+;IF DEF(_BLUE)
+;DefaultNamesPlayer:
+;	db   "NEW NAME"
+;	next "BLUE"
+;	next "GARY"
+;	next "JOHN"
+;	db   "@"
 
-DefaultNamesRival:
-	db   "NEW NAME"
-	next "RED"
-	next "ASH"
-	next "JACK"
-	db   "@"
-ENDC
+;DefaultNamesRival:
+;	db   "NEW NAME"
+;	next "RED"
+;	next "ASH"
+;	next "JACK"
+;	db   "@"
+;ENDC
