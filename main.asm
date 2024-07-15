@@ -682,6 +682,7 @@ INCLUDE "engine/gfx/mon_icons.asm"
 INCLUDE "engine/events/in_game_trades.asm"
 INCLUDE "engine/gfx/palettes.asm"
 INCLUDE "engine/menus/save.asm"
+INCLUDE "engine/overworld/field_moves.asm"
 
 
 SECTION "Itemfinder 1", ROMX
@@ -798,3 +799,4 @@ SECTION "bank2F", ROMX, BANK[$2F]
 
 INCLUDE "data/sgb/sgb_palettes.asm"
 INCLUDE "engine/mon_gender.asm"
+INCLUDE "engine/overworld/remove_cut_trees.asm"
