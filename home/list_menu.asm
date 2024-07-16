@@ -111,16 +111,11 @@ DisplayListMenuIDLoop::
 	ld a, c
 	ld [wWhichPokemon], a
 	ld a, [wListMenuID]
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;needed to make Mateo's move deleter/relearner work
-	cp a, MOVESLISTMENU
-	jr z, .skipStoringItemName
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	cp ITEMLISTMENU
 	jr nz, .skipMultiplying
 ; if it's an item menu
 	sla c ; item entries are 2 bytes long, so multiply by 2
-.skipMultiplying
+.skipMultiplying ; this function is modified using something from shin pokered; tldr it makes the move relearner/deleter work. it works and runs faster than my own solution, so I won't question it.
 	ld a, [wListPointer]
 	ld l, a
 	ld a, [wListPointer + 1]
@@ -131,12 +126,17 @@ DisplayListMenuIDLoop::
 	ld a, [hl]
 	ld [wcf91], a
 	ld a, [wListMenuID]
-	and a ; PCPOKEMONLISTMENU?
+	and a ; is it a PC pokemon list?
 	jr z, .pokemonList
 	push hl
 	call GetItemPrice
 	pop hl
-	ld a, [wListMenuID]
+	ld a,[wListMenuID]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;needed to make Mateo's move deleter/relearner work
+	cp a, MOVESLISTMENU
+	jr z, .skipStoringItemName
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	cp ITEMLISTMENU
 	jr nz, .skipGettingQuantity
 ; if it's an item menu
@@ -144,8 +144,8 @@ DisplayListMenuIDLoop::
 	ld a, [hl] ; a = item quantity
 	ld [wMaxItemQuantity], a
 .skipGettingQuantity
-;	ld a, [wcf91]
-;	ld [wd0b5], a
+	ld a, [wcf91]
+	ld [wd0b5], a
 	ld a, BANK(ItemNames)
 	ld [wPredefBank], a
 	call GetName
@@ -163,7 +163,7 @@ DisplayListMenuIDLoop::
 .storeChosenEntry ; store the menu entry that the player chose and return
 	ld de, wcd6d
 	call CopyToStringBuffer
-	.skipStoringItemName	;skip here if skipping storing item name
+.skipStoringItemName	;skip here if skipping storing item name
 	ld a, CHOSE_MENU_ITEM
 	ld [wMenuExitMethod], a
 	ld a, [wCurrentMenuItem]

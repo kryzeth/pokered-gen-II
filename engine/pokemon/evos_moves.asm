@@ -607,7 +607,6 @@ PrepareRelearnableMoveList:: ; I don't know how the fuck you're a single colon i
 	jr .loop
 .done	
 
-
 ;joenote - start checking for level-0 moves
 	xor a
 	ld b, a	;b will act as a counter, as there can only be up to 4 level-0 moves

@@ -77,13 +77,13 @@ MoveRelearnerText1:
 	pop bc
 	ld a, b
 	ld [wWhichPokemon], a
-	ld a, [wLetterPrintingDelayFlags]
-	push af
-	xor a
-	ld [wLetterPrintingDelayFlags], a
+	;ld a, [wLetterPrintingDelayFlags]
+	;push af
+	;xor a
+	;ld [wLetterPrintingDelayFlags], a
 	predef LearnMove
-	pop af
-	ld [wLetterPrintingDelayFlags], a
+	;pop af
+	;ld [wLetterPrintingDelayFlags], a
 	ld a, b
 	and a
 	jr z, .exit
