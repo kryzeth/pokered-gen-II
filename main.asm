@@ -3,7 +3,7 @@ SECTION "bank1", ROMX
 INCLUDE "data/sprites/facings.asm"
 INCLUDE "engine/events/black_out.asm"
 	ds $149
-INCLUDE "data/pokemon/mew.asm"
+;INCLUDE "data/pokemon/mew.asm"
 INCLUDE "engine/battle/safari_zone.asm"
 INCLUDE "engine/movie/title.asm"
 INCLUDE "engine/pokemon/load_mon_data.asm"
@@ -793,6 +793,8 @@ MewtwoPicFront::      INCBIN "gfx/pokemon/front/mewtwo.pic"
 MewtwoPicBack::       INCBIN "gfx/pokemon/back/mewtwob.pic"
 MewPicFront::         INCBIN "gfx/pokemon/front/mew.pic"
 MewPicBack::          INCBIN "gfx/pokemon/back/mewb.pic"
+CrobatPicFront::      INCBIN "gfx/pokemon/front/crobat.pic"
+CrobatPicBack::       INCBIN "gfx/pokemon/back/crobatb.pic"
 
 
 SECTION "bank2F", ROMX, BANK[$2F]
