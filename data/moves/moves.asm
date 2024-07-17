@@ -11,6 +11,7 @@ ENDM
 Moves:
 ; Characteristics of each move.
 	table_width MOVE_LENGTH, Moves
+	; animation,	   effect,					 power, type,	 accuracy, PP
 	move POUND,        NO_ADDITIONAL_EFFECT,        40, NORMAL,       100, 35
 	move KARATE_CHOP,  NO_ADDITIONAL_EFFECT,        50, NORMAL,       100, 25
 	move DOUBLESLAP,   TWO_TO_FIVE_ATTACKS_EFFECT,  15, NORMAL,        85, 10
@@ -158,7 +159,7 @@ Moves:
 	move BUBBLE,       SPEED_DOWN_SIDE_EFFECT,      20, WATER,        100, 30
 	move DIZZY_PUNCH,  NO_ADDITIONAL_EFFECT,        70, NORMAL,       100, 10
 	move SPORE,        SLEEP_EFFECT,                 0, GRASS,        100, 15
-	move FLASH,        ACCURACY_DOWN1_EFFECT,        0, NORMAL,        70, 20
+	move FLASH,        ACCURACY_DOWN1_EFFECT,       20, NORMAL,        90, 20 ; Buffed from 0 base power, 70 accuracy
 	move PSYWAVE,      SPECIAL_DAMAGE_EFFECT,        1, PSYCHIC_TYPE,  80, 15
 	move SPLASH,       SPLASH_EFFECT,                0, NORMAL,       100, 40
 	move ACID_ARMOR,   DEFENSE_UP2_EFFECT,           0, POISON,       100, 40
