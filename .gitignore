@@ -33,8 +33,9 @@
 # Ignoring some common visual studio things
 .vs
 
-# Just a script I used to locate lines of code
+# Just some scripts for personal use
 searcher.py
+/data/moves/export_moves_table.py
 
 #Action replay codes to enable debug mode
 *.clt
