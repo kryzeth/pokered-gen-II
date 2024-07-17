@@ -284,8 +284,14 @@ OverworldLoopLessDelay::
 	ld a, [wd736]
 	bit 6, a ; jumping a ledge?
 	jr nz, .normalPlayerSpriteAdvancement
+	; Bike is normally 2x walking speed
+	; Holding B makes the bike even faster 
+	ld a, [hJoyHeld]
+	and B_BUTTON
+	jr z, .notMachBike
 	call DoBikeSpeedup
 	call DoBikeSpeedup
+.notMachBike
 	call DoBikeSpeedup
 	jr .notRunning
 .normalPlayerSpriteAdvancement
@@ -395,12 +401,13 @@ DoBikeSpeedup::
 	ld a, [wNPCMovementScriptPointerTableNum]
 	and a
 	ret nz
-	ld a, [wCurMap]
-	cp ROUTE_17 ; Cycling Road
-	jr nz, .goFaster
-	ldh a, [hJoyHeld]
-	and D_UP | D_LEFT | D_RIGHT
-	ret nz
+    ; Remove the check for ROUTE_17
+    ;ld a, [wCurMap]
+    ;cp ROUTE_17 ; Cycling Road
+    ;jr nz, .goFaster
+    ;ldh a, [hJoyHeld]
+    ;and D_UP | D_LEFT | D_RIGHT
+    ;ret nz
 .goFaster
 	jp AdvancePlayerSprite
 
@@ -1847,14 +1854,15 @@ JoypadOverworld::
 	ld a, [wFlags_D733]
 	bit 3, a ; check if a trainer wants a challenge
 	jr nz, .notForcedDownwards
-	ld a, [wCurMap]
-	cp ROUTE_17 ; Cycling Road
-	jr nz, .notForcedDownwards
-	ldh a, [hJoyHeld]
-	and D_DOWN | D_UP | D_LEFT | D_RIGHT | B_BUTTON | A_BUTTON
-	jr nz, .notForcedDownwards
-	ld a, D_DOWN
-	ldh [hJoyHeld], a ; on the cycling road, if there isn't a trainer and the player isn't pressing buttons, simulate a down press
+	; Remove the check for ROUTE_17
+    ;ld a, [wCurMap]
+    ;cp ROUTE_17 ; Cycling Road
+    ;jr nz, .notForcedDownwards
+    ;ldh a, [hJoyHeld]
+    ;and D_DOWN | D_UP | D_LEFT | D_RIGHT | B_BUTTON | A_BUTTON
+    ;jr nz, .notForcedDownwards
+    ;ld a, D_DOWN
+    ;ldh [hJoyHeld], a ; on the cycling road, if there isn't a trainer and the player isn't pressing buttons, simulate a down press
 .notForcedDownwards
 	ld a, [wd730]
 	bit 7, a
