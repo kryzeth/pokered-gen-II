@@ -1,12 +1,18 @@
 _Route2GateOaksAideFlashExplanationText::
 	text "The HM FLASH"
-	line "lights even the"
-	cont "darkest dungeons."
+	line "isn't needed"
+	cont "out of battle."
+
+	para "But now it deals"
+	line "damage in battle!"
 	done
 
 _Route2GateYoungsterText::
-	text "Once a #MON"
-	line "learns FLASH, you"
-	cont "can get through"
-	cont "ROCK TUNNEL."
+	text "It's great that"
+	line "they added lights"
+	cont "to ROCK TUNNEL."
+
+	para "Now I can make"
+	line "it through"
+	cont "without a map!"
 	done
