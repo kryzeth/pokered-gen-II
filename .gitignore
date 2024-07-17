@@ -34,8 +34,8 @@
 .vs
 
 # Just some scripts for personal use
-searcher.py
-/data/moves/export_moves_table.py
+*searcher.py
+*export*table.py
 
 #Action replay codes to enable debug mode
 *.clt

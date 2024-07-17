@@ -77,7 +77,7 @@ DEF SPDSPCDV_TRAINER EQU $88
 
 ; wPlayerBattleStatus1 or wEnemyBattleStatus1 bit flags
 	const_def
-	const STORING_ENERGY           ; 0 ; Bide
+	const INVULN_TEST           ; 0 ; Bide
 	const THRASHING_ABOUT          ; 1 ; e.g. Thrash
 	const ATTACKING_MULTIPLE_TIMES ; 2 ; e.g. Double Kick, Fury Attack
 	const FLINCHED                 ; 3
