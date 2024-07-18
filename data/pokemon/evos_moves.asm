@@ -601,7 +601,7 @@ OnixEvosMoves:
 	db 0
 ; Learnset
 	db 15, BIND
-	db 19, ROCK_THROW
+	db 16, ROCK_THROW
 	db 25, RAGE
 	db 33, SLAM
 	db 43, HARDEN
@@ -1997,7 +1997,7 @@ GeodudeEvosMoves:
 	db 0
 ; Learnset
 	db 11, DEFENSE_CURL
-	db 16, ROCK_THROW
+	db 12, ROCK_THROW
 	db 21, SELFDESTRUCT
 	db 26, HARDEN
 	db 31, EARTHQUAKE

@@ -15,8 +15,8 @@
 
 	; tm/hm learnset
 	tmhm TOXIC,        HYPER_BEAM,   RAGE,         THUNDERBOLT,  THUNDER,      \
-	     MIMIC,        DOUBLE_TEAM,  BIDE,         SELFDESTRUCT, FIRE_BLAST,   \
-	     REST,         EXPLOSION,    SUBSTITUTE
+	     MIMIC,        DOUBLE_TEAM,  SELFDESTRUCT, FIRE_BLAST,   REST,         \
+		 EXPLOSION,    SUBSTITUTE
 	; end
 
 	db BANK(WeezingPicFront)

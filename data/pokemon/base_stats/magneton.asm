@@ -3,7 +3,7 @@
 	db  50,  60,  95,  70, 120
 	;   hp  atk  def  spd  spc
 
-	db ELECTRIC, ELECTRIC ; type
+	db ELECTRIC, STEEL ; type
 	db 60 ; catch rate
 	db 161 ; base exp
 
@@ -16,8 +16,8 @@
 	; tm/hm learnset
 	tmhm TOXIC,        TAKE_DOWN,    DOUBLE_EDGE,  HYPER_BEAM,   RAGE,         \
 	     THUNDERBOLT,  THUNDER,      TELEPORT,     MIMIC,        DOUBLE_TEAM,  \
-	     REFLECT,      BIDE,         SWIFT,        REST,         THUNDER_WAVE, \
-	     SUBSTITUTE,   FLASH
+	     REFLECT,      SWIFT,        REST,         THUNDER_WAVE, SUBSTITUTE,   \
+		 FLASH
 	; end
 
 	db BANK(MagnetonPicFront)

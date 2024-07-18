@@ -745,8 +745,6 @@ MonsStatsFellText:
 	ld a, [wEnemyMoveEffect]
 .playerTurn
 ; check if the move's effect decreases a stat by 2
-	; cp BIDE_EFFECT
-	; ret c
 	cp ATTACK_DOWN_SIDE_EFFECT
 	ret nc
 	ld hl, GreatlyFellText
@@ -779,33 +777,6 @@ PrintStatText:
 INCLUDE "data/battle/stat_mod_names.asm"
 
 INCLUDE "data/battle/stat_modifiers.asm"
-
-;BideEffect:
-;	ld hl, wPlayerBattleStatus1
-;	ld de, wPlayerBideAccumulatedDamage
-;	ld bc, wPlayerNumAttacksLeft
-;	ldh a, [hWhoseTurn]
-;	and a
-;	jr z, .bideEffect
-;	ld hl, wEnemyBattleStatus1
-;	ld de, wEnemyBideAccumulatedDamage
-;	ld bc, wEnemyNumAttacksLeft
-;.bideEffect
-;	set STORING_ENERGY, [hl] ; mon is now using bide
-;	xor a
-;	ld [de], a
-;	inc de
-;	ld [de], a
-;	ld [wPlayerMoveEffect], a
-;	ld [wEnemyMoveEffect], a
-;	call BattleRandom
-;	and $1
-;	inc a
-;	inc a
-;	ld [bc], a ; set Bide counter to 2 or 3 at random
-;	ldh a, [hWhoseTurn]
-;	add XSTATITEM_ANIM
-;	jp PlayBattleAnimation2
 
 ThrashPetalDanceEffect:
 	ld hl, wPlayerBattleStatus1
