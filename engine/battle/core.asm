@@ -5401,20 +5401,9 @@ MoveHitTest:
 .dreamEaterCheck
 	ld a, [de]
 	cp DREAM_EATER_EFFECT
-	jr nz, .swiftCheck
+	jr nz, .checkForDigOrFlyStatus
 	ld a, [bc]
 	and SLP_MASK
-	jp z, .moveMissed
-.swiftCheck
-	ld a, [de]					; Load value at DE into A (move effect)
-	cp SWIFT_EFFECT				; Compare A with SWIFT_EFFECT
-	ret z ; Swift never misses (this was fixed from the Japanese versions)
-	call CheckTargetSubstitute ; substitute check (note that this overwrites a)
-	jr z, .checkForDigOrFlyStatus
-	ld a, [de]					; somehow fixes HP draining moves healing against substitutes 
-	cp DRAIN_HP_EFFECT
-	jp z, .moveMissed
-	cp DREAM_EATER_EFFECT
 	jp z, .moveMissed
 .checkForDigOrFlyStatus
 	ld a, [de]                    ; Load value at DE into A (move effect)
@@ -5422,7 +5411,7 @@ MoveHitTest:
 	jr z, .skipDigCheck           ; Jump if equal (skip dig check)
 
 	cp ANTI_FLY_EFFECT            ; Compare A with ANTI_FLY_EFFECT
-	jr z, .skipFlyCheck           ; Jump if equal (skip fly check)
+	jr z, .swiftCheck	          ; Jump if equal (skip fly check)
 
 	bit INVULNERABLE_DIG, [hl]    ; Check INVULNERABLE_DIG bit in battle status 1
 	jp nz, .moveMissed            ; Jump if not zero flag set (move missed due to dig)
@@ -5431,7 +5420,18 @@ MoveHitTest:
 	bit INVULNERABLE_FLY, [hl]    ; Check INVULNERABLE_FLY bit in battle status 1
 	jp nz, .moveMissed            ; Jump if not zero flag set (move missed due to fly)
 
-.skipFlyCheck
+.swiftCheck
+	ld a, [de]					; Load value at DE into A (move effect)
+	cp SWIFT_EFFECT				; Compare A with SWIFT_EFFECT
+	ret z ; Swift never misses (this was fixed from the Japanese versions)
+	call CheckTargetSubstitute ; substitute check (note that this overwrites a)
+	jr z, .noSubstitute
+	ld a, [de]					; somehow fixes HP draining moves healing against substitutes 
+	cp DRAIN_HP_EFFECT
+	jp z, .moveMissed
+	cp DREAM_EATER_EFFECT
+	jp z, .moveMissed
+.noSubstitute
 	ldh a, [hWhoseTurn]           ; Load whose turn it is
 	and a                         ; Clear A, set zero flag if A is zero
 	jr nz, .enemyTurn             ; Jump if not zero flag set (enemy's turn)
