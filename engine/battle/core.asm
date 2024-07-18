@@ -3114,7 +3114,8 @@ PlayerCanExecuteChargingMove:
 	res CHARGING_UP, [hl] ; reset charging up and invulnerability statuses if mon was charging up for an attack
 	                    ; being fully paralyzed or hurting oneself in confusion removes charging up status
 	                    ; resulting in the Pokemon being invulnerable for the whole battle
-	res INVULNERABLE, [hl]
+	res INVULNERABLE_DIG, [hl]
+	res INVULNERABLE_FLY, [hl]
 PlayerCanExecuteMove:
 	call PrintMonName1Text
 	ld hl, DecrementPP
@@ -5405,28 +5406,41 @@ MoveHitTest:
 	and SLP_MASK
 	jp z, .moveMissed
 .swiftCheck
-	ld a, [de]
-	cp SWIFT_EFFECT
+	ld a, [de]					; Load value at DE into A (move effect)
+	cp SWIFT_EFFECT				; Compare A with SWIFT_EFFECT
 	ret z ; Swift never misses (this was fixed from the Japanese versions)
 	call CheckTargetSubstitute ; substitute check (note that this overwrites a)
 	jr z, .checkForDigOrFlyStatus
-	ld a, [de]	; somehow fixes HP draining moves healing against substitutes 
+	ld a, [de]					; somehow fixes HP draining moves healing against substitutes 
 	cp DRAIN_HP_EFFECT
 	jp z, .moveMissed
 	cp DREAM_EATER_EFFECT
 	jp z, .moveMissed
 .checkForDigOrFlyStatus
-	bit INVULNERABLE, [hl]
-	jp nz, .moveMissed
-	ldh a, [hWhoseTurn]
-	and a
-	jr nz, .enemyTurn
+	ld a, [de]                    ; Load value at DE into A (move effect)
+	cp ANTI_DIG_EFFECT            ; Compare A with ANTI_DIG_EFFECT
+	jr z, .skipDigCheck           ; Jump if equal (skip dig check)
+
+	cp ANTI_FLY_EFFECT            ; Compare A with ANTI_FLY_EFFECT
+	jr z, .skipFlyCheck           ; Jump if equal (skip fly check)
+
+	bit INVULNERABLE_DIG, [hl]    ; Check INVULNERABLE_DIG bit in battle status 1
+	jp nz, .moveMissed            ; Jump if not zero flag set (move missed due to dig)
+
+.skipDigCheck
+	bit INVULNERABLE_FLY, [hl]    ; Check INVULNERABLE_FLY bit in battle status 1
+	jp nz, .moveMissed            ; Jump if not zero flag set (move missed due to fly)
+
+.skipFlyCheck
+	ldh a, [hWhoseTurn]           ; Load whose turn it is
+	and a                         ; Clear A, set zero flag if A is zero
+	jr nz, .enemyTurn             ; Jump if not zero flag set (enemy's turn)
 .playerTurn
 ; this checks if the move effect is disallowed by mist
 	ld a, [wPlayerMoveEffect]
 	cp ATTACK_DOWN1_EFFECT
 	jr c, .skipEnemyMistCheck
-	cp HAZE_EFFECT + 1
+	cp CONVERSION_EFFECT + 1
 	jr c, .enemyMistCheck
 	cp ATTACK_DOWN2_EFFECT
 	jr c, .skipEnemyMistCheck
@@ -5434,10 +5448,10 @@ MoveHitTest:
 	jr c, .enemyMistCheck
 	jr .skipEnemyMistCheck
 .enemyMistCheck
-; if move effect is from $12 to $19 inclusive or $3a to $41 inclusive
+; if move effect is from $12 to $18 inclusive or $3a to $41 inclusive ; changed from $12 to $19
 ; i.e. the following moves
 ; GROWL, TAIL WHIP, LEER, STRING SHOT, SAND-ATTACK, SMOKESCREEN, KINESIS,
-; FLASH, CONVERSION*, HAZE*, SCREECH, LIGHT SCREEN*, REFLECT*
+; FLASH, CONVERSION*, SCREECH, LIGHT SCREEN*, REFLECT* ; HAZE was moved and no longer included
 ; the moves that are marked with an asterisk are not affected since this
 ; function is not called when those moves are used
 	ld a, [wEnemyBattleStatus2]
@@ -5452,7 +5466,7 @@ MoveHitTest:
 	ld a, [wEnemyMoveEffect]
 	cp ATTACK_DOWN1_EFFECT
 	jr c, .skipPlayerMistCheck
-	cp HAZE_EFFECT + 1
+	cp CONVERSION_EFFECT + 1
 	jr c, .playerMistCheck
 	cp ATTACK_DOWN2_EFFECT
 	jr c, .skipPlayerMistCheck
@@ -5661,7 +5675,8 @@ CheckIfEnemyNeedsToChargeUp:
 EnemyCanExecuteChargingMove:
 	ld hl, wEnemyBattleStatus1
 	res CHARGING_UP, [hl] ; no longer charging up for attack
-	res INVULNERABLE, [hl] ; no longer invulnerable to typical attacks
+	res INVULNERABLE_DIG, [hl] ; no longer invulnerable to typical attacks
+	res INVULNERABLE_FLY, [hl] ; no longer invulnerable to typical attacks
 	ld a, [wEnemyMoveNum]
 	ld [wd0b5], a
 	ld a, BANK(MoveNames)
@@ -6007,7 +6022,7 @@ CheckEnemyStatusConditions:
 	ld a, [hl]
 	; clear bide, thrashing, charging up, trapping moves such as wrap (already cleared for confusion damage), and invulnerable moves
 	; and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE) | (1 << INVULNERABLE))
-	and ~((1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE) | (1 << INVULNERABLE))
+	and ~((1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE) | (1 << INVULNERABLE_DIG) | (1 << INVULNERABLE_FLY))
 	ld [hl], a
 	ld a, [wEnemyMoveEffect]
 	cp FLY_EFFECT
@@ -6791,7 +6806,9 @@ HandleExplodingAnimation:
 	ret nz
 .isExplodingMove
 	ld a, [de]
-	bit INVULNERABLE, a ; fly/dig
+	bit INVULNERABLE_DIG, a ; Check if mon is invulnerable to dig attacks
+	ret nz
+	bit INVULNERABLE_FLY, a ; Check if mon is invulnerable to fly attacks
 	ret nz
 	ld a, [hli]
 	cp GHOST

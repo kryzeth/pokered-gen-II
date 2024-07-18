@@ -5,7 +5,7 @@
 ; MoveEffectPointerTable indexes (see data/moves/effects_pointers.asm)
 	const_def
 	const NO_ADDITIONAL_EFFECT       ; $00
-	const EFFECT_01                  ; $01 unused
+	const HAZE_EFFECT                ; $01 Moved HAZE_EFFECT from $19, replaced unused EFFECT_01
 	const POISON_SIDE_EFFECT1        ; $02
 	const DRAIN_HP_EFFECT            ; $03
 	const BURN_SIDE_EFFECT1          ; $04
@@ -29,8 +29,8 @@
 	const ACCURACY_DOWN1_EFFECT      ; $16
 	const EVASION_DOWN1_EFFECT       ; $17
 	const CONVERSION_EFFECT          ; $18
-	const HAZE_EFFECT                ; $19
-	; const BIDE_EFFECT                ; $1A
+	const ANTI_DIG_EFFECT	         ; $19 Moved HAZE_EFFECT to $01, replaced with new ANTI_DIG_EFFECT
+	const ANTI_FLY_EFFECT            ; $1A Replaced BIDE_EFFECT so ANTI_DIG and ANTI_FLY could be next to each other
 	const THRASH_PETAL_DANCE_EFFECT  ; $1B
 	const SWITCH_AND_TELEPORT_EFFECT ; $1C
 	const TWO_TO_FIVE_ATTACKS_EFFECT ; $1D

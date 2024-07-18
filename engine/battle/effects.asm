@@ -585,7 +585,9 @@ StatModifierDownEffect:
 	and a
 	jp nz, MoveMissed
 	ld a, [bc]
-	bit INVULNERABLE, a ; fly/dig
+	bit INVULNERABLE_DIG, a ; Check if mon is invulnerable to dig attacks
+	jp nz, MoveMissed
+	bit INVULNERABLE_FLY, a ; Check if mon is invulnerable to fly attacks
 	jp nz, MoveMissed
 	ld a, [de]
 	sub ATTACK_DOWN1_EFFECT
@@ -1028,13 +1030,13 @@ ChargeEffect:
 	dec de ; de contains enemy or player MOVENUM
 	cp FLY_EFFECT
 	jr nz, .notFly
-	set INVULNERABLE, [hl] ; mon is now invulnerable to typical attacks (fly/dig)
+	set INVULNERABLE_FLY, [hl] ; mon is now invulnerable to typical attacks (fly)
 	ld b, TELEPORT ; load Teleport's animation
 .notFly
 	ld a, [de]
 	cp DIG
 	jr nz, .notDigOrFly
-	set INVULNERABLE, [hl] ; mon is now invulnerable to typical attacks (fly/dig)
+	set INVULNERABLE_DIG, [hl] ; mon is now invulnerable to typical attacks (dig)
 	ld b, SLIDE_DOWN_ANIM
 .notDigOrFly
 	xor a
@@ -1223,7 +1225,7 @@ MimicEffect:
 	call MoveHitTest
 	ld a, [wMoveMissed]
 	and a
-	jr nz, .mimicMissed
+	jp nz, .mimicMissed
 	ldh a, [hWhoseTurn]
 	and a
 	ld hl, wBattleMonMoves
@@ -1235,7 +1237,9 @@ MimicEffect:
 	ld hl, wEnemyMonMoves
 	ld a, [wEnemyBattleStatus1]
 .enemyTurn
-	bit INVULNERABLE, a
+	bit INVULNERABLE_DIG, a; Check if mon is invulnerable to dig attacks
+	jr nz, .mimicMissed
+	bit INVULNERABLE_FLY, a; Check if mon is invulnerable to fly attacks
 	jr nz, .mimicMissed
 .getRandomMove
 	push hl
@@ -1259,7 +1263,9 @@ MimicEffect:
 	jr .playerTurn
 .letPlayerChooseMove
 	ld a, [wEnemyBattleStatus1]
-	bit INVULNERABLE, a
+	bit INVULNERABLE_DIG, a ; Check if mon is invulnerable to dig attacks
+	jr nz, .mimicMissed
+	bit INVULNERABLE_FLY, a ; Check if mon is invulnerable to fly attacks
 	jr nz, .mimicMissed
 	ld a, [wCurrentMenuItem]
 	push af

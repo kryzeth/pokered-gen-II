@@ -11,7 +11,9 @@ ConversionEffect_:
 	pop de
 	ld a, [wPlayerBattleStatus1]
 .conversionEffect
-	bit INVULNERABLE, a ; is mon immune to typical attacks (dig/fly)
+	bit INVULNERABLE_DIG, a ; Check if mon is immune to dig attacks
+	jr nz, PrintButItFailedText
+	bit INVULNERABLE_FLY, a ; Check if mon is immune to fly attacks
 	jr nz, PrintButItFailedText
 ; copy target's types to user
 	ld a, [hli]

@@ -12,7 +12,9 @@ TransformEffect_:
 	ld [wPlayerMoveListIndex], a
 	ld a, [wPlayerBattleStatus1]
 .hitTest
-	bit INVULNERABLE, a ; is mon invulnerable to typical attacks? (fly/dig)
+	bit INVULNERABLE_DIG, a ; Check if mon is immune to dig attacks
+	jp nz, .failed
+	bit INVULNERABLE_FLY, a ; Check if mon is immune to fly attacks
 	jp nz, .failed
 	push hl
 	push de
