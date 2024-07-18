@@ -601,7 +601,7 @@ OnixEvosMoves:
 	db 0
 ; Learnset
 	db 15, BIND
-	db 16, ROCK_THROW
+	db 19, ROCK_THROW
 	db 25, RAGE
 	db 33, SLAM
 	db 43, HARDEN
