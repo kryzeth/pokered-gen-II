@@ -13,7 +13,7 @@ Moves:
 	table_width MOVE_LENGTH, Moves
 	; name,			   additional effect,		 power, type,	 accuracy, PP
 	move POUND,        NO_ADDITIONAL_EFFECT,        40, NORMAL,       100, 35
-	move KARATE_CHOP,  NO_ADDITIONAL_EFFECT,        50, NORMAL,       100, 25
+	move KARATE_CHOP,  NO_ADDITIONAL_EFFECT,        50, FIGHTING,     100, 25	; Karate Chop is now Fighting
 	move DOUBLESLAP,   TWO_TO_FIVE_ATTACKS_EFFECT,  15, NORMAL,        85, 10
 	move COMET_PUNCH,  TWO_TO_FIVE_ATTACKS_EFFECT,  18, NORMAL,        85, 15
 	move MEGA_PUNCH,   NO_ADDITIONAL_EFFECT,        80, NORMAL,        85, 20
@@ -39,7 +39,7 @@ Moves:
 	move MEGA_KICK,    NO_ADDITIONAL_EFFECT,       120, NORMAL,        75,  5
 	move JUMP_KICK,    JUMP_KICK_EFFECT,            70, FIGHTING,      95, 25
 	move ROLLING_KICK, FLINCH_SIDE_EFFECT2,         60, FIGHTING,      85, 15
-	move SAND_ATTACK,  ACCURACY_DOWN1_EFFECT,        0, NORMAL,       100, 15
+	move SAND_ATTACK,  ACCURACY_DOWN1_EFFECT,        0, GROUND,       100, 15	; Sand Attack is now Ground
 	move HEADBUTT,     FLINCH_SIDE_EFFECT2,         70, NORMAL,       100, 15
 	move HORN_ATTACK,  NO_ADDITIONAL_EFFECT,        65, NORMAL,       100, 25
 	move FURY_ATTACK,  TWO_TO_FIVE_ATTACKS_EFFECT,  15, NORMAL,        85, 20
@@ -55,7 +55,7 @@ Moves:
 	move TWINEEDLE,    TWINEEDLE_EFFECT,            25, BUG,          100, 20
 	move PIN_MISSILE,  TWO_TO_FIVE_ATTACKS_EFFECT,  14, BUG,           85, 20
 	move LEER,         DEFENSE_DOWN1_EFFECT,         0, NORMAL,       100, 30
-	move BITE,         FLINCH_SIDE_EFFECT1,         60, NORMAL,       100, 25
+	move BITE,         FLINCH_SIDE_EFFECT1,         60, DARK,		  100, 25	; Bite is now Dark
 	move GROWL,        ATTACK_DOWN1_EFFECT,          0, NORMAL,       100, 40
 	move ROAR,         SWITCH_AND_TELEPORT_EFFECT,   0, NORMAL,       100, 20
 	move SING,         SLEEP_EFFECT,                 0, NORMAL,        55, 15
@@ -99,7 +99,7 @@ Moves:
 	move THUNDERBOLT,  PARALYZE_SIDE_EFFECT1,       95, ELECTRIC,     100, 15
 	move THUNDER_WAVE, PARALYZE_EFFECT,              0, ELECTRIC,     100, 20
 	move THUNDER,      PARALYZE_SIDE_EFFECT1,      120, ELECTRIC,      70, 10
-	move ROCK_THROW,   NO_ADDITIONAL_EFFECT,        50, ROCK,          65, 15
+	move ROCK_THROW,   NO_ADDITIONAL_EFFECT,        40, ROCK,          90, 15	; Rock Throw 40/90 from 50/65
 	move EARTHQUAKE,   ANTI_DIG_EFFECT,		       100, GROUND,       100, 10	; Earthquake can hit opponent using Dig
 	move FISSURE,      OHKO_EFFECT,                  1, GROUND,        30,  5
 	move DIG,          CHARGE_EFFECT,              100, GROUND,       100, 10
@@ -159,7 +159,7 @@ Moves:
 	move BUBBLE,       SPEED_DOWN_SIDE_EFFECT,      20, WATER,        100, 30
 	move DIZZY_PUNCH,  NO_ADDITIONAL_EFFECT,        70, NORMAL,       100, 10
 	move SPORE,        SLEEP_EFFECT,                 0, GRASS,        100, 15
-	move FLASH,        ACCURACY_DOWN1_EFFECT,       20, NORMAL,        90, 20 ; Buffed from 0 base power, 70 accuracy
+	move FLASH,        ACCURACY_DOWN1_EFFECT,       20, NORMAL,        90, 20 ; Flash buffed from 0 power, 70 accuracy
 	move PSYWAVE,      SPECIAL_DAMAGE_EFFECT,        1, PSYCHIC_TYPE,  80, 15
 	move SPLASH,       SPLASH_EFFECT,                0, NORMAL,       100, 40
 	move ACID_ARMOR,   DEFENSE_UP2_EFFECT,           0, POISON,       100, 40

@@ -16,8 +16,7 @@
 	; tm/hm learnset
 	tmhm SWORDS_DANCE, TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  \
 	     HYPER_BEAM,   RAGE,         MEGA_DRAIN,   SOLARBEAM,    MIMIC,        \
-	     DOUBLE_TEAM,  BIDE,         SKULL_BASH,   REST,         SUBSTITUTE,   \
-	     CUT
+	     DOUBLE_TEAM,  SKULL_BASH,   REST,         SUBSTITUTE,   CUT
 	; end
 
 	db BANK(TangelaPicFront)

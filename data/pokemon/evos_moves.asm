@@ -1997,7 +1997,7 @@ GeodudeEvosMoves:
 	db 0
 ; Learnset
 	db 11, DEFENSE_CURL
-	db 16, ROCK_THROW
+	db 12, ROCK_THROW
 	db 21, SELFDESTRUCT
 	db 26, HARDEN
 	db 31, EARTHQUAKE

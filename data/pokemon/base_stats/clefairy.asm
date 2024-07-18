@@ -3,7 +3,7 @@
 	db  70,  45,  48,  35,  60
 	;   hp  atk  def  spd  spc
 
-	db NORMAL, NORMAL ; type
+	db FAIRY, FAIRY ; type
 	db 150 ; catch rate
 	db 68 ; base exp
 
@@ -18,9 +18,9 @@
 	     DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
 	     SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         SOLARBEAM,    \
 	     THUNDERBOLT,  THUNDER,      PSYCHIC_M,    TELEPORT,     MIMIC,        \
-	     DOUBLE_TEAM,  REFLECT,      BIDE,         METRONOME,    FIRE_BLAST,   \
-	     SKULL_BASH,   REST,         THUNDER_WAVE, PSYWAVE,      TRI_ATTACK,   \
-	     SUBSTITUTE,   STRENGTH,     FLASH
+	     DOUBLE_TEAM,  REFLECT,      METRONOME,    FIRE_BLAST,   SKULL_BASH,   \
+		 REST,         THUNDER_WAVE, PSYWAVE,      TRI_ATTACK,   SUBSTITUTE,   \
+		 STRENGTH,     FLASH
 	; end
 
 	db BANK(ClefairyPicFront)

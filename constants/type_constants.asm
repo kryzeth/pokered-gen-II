@@ -10,7 +10,9 @@ DEF PHYSICAL EQU const_value
 	const ROCK         ; $05
 	const BIRD         ; $06
 	const BUG          ; $07
-	const GHOST        ; $08
+	const DRAGON       ; $08
+	const DARK         ; $09
+	const STEEL        ; $10
 
 DEF UNUSED_TYPES EQU const_value
 	const_next 20
@@ -23,6 +25,8 @@ DEF SPECIAL EQU const_value
 	const ELECTRIC     ; $17
 	const PSYCHIC_TYPE ; $18
 	const ICE          ; $19
-	const DRAGON       ; $1A
+	const GHOST        ; $1A
+	const FAIRY        ; $1B
+	const POISON_LEV   ; $1C ; This is for defensive purposes only
 
 DEF NUM_TYPES EQU const_value

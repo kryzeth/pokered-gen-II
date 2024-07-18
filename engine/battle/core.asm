@@ -311,8 +311,8 @@ MainInBattleLoop:
 	and (1 << FRZ)
 	jr nz, .selectEnemyMove ; if so, jump
 	ld a, [wPlayerBattleStatus1]
-	; and (1 << STORING_ENERGY) | (1 << USING_TRAPPING_MOVE) ; check player is using Bide or using a multi-turn attack like wrap
-	and (1 << USING_TRAPPING_MOVE) ; check player is using Bide or using a multi-turn attack like wrap
+	; and (1 << STORING_ENERGY) | (1 << USING_TRAPPING_MOVE) ; check player is using a multi-turn attack like wrap
+	and (1 << USING_TRAPPING_MOVE) ; check player is using a multi-turn attack like wrap
 	jr nz, .selectEnemyMove ; if so, jump
 	ld a, [wEnemyBattleStatus1]
 	bit USING_TRAPPING_MOVE, a ; check if enemy is using a multi-turn attack like wrap
@@ -2948,8 +2948,8 @@ SelectEnemyMove:
 	and (1 << FRZ) | SLP_MASK
 	ret nz
 	ld a, [wEnemyBattleStatus1]
-	; and (1 << USING_TRAPPING_MOVE) | (1 << STORING_ENERGY) ; using a trapping move like wrap or bide
-	and (1 << USING_TRAPPING_MOVE) ; using a trapping move like wrap or bide
+	; and (1 << USING_TRAPPING_MOVE) | (1 << STORING_ENERGY) ; using a trapping move like wrap
+	and (1 << USING_TRAPPING_MOVE) ; using a trapping move like wrap
 	ret nz
 	ld a, [wPlayerBattleStatus1]
 	bit USING_TRAPPING_MOVE, a ; caught in player's trapping move (e.g. wrap)
@@ -3466,8 +3466,7 @@ CheckPlayerStatusConditions:
 .MonHurtItselfOrFullyParalysed
 	ld hl, wPlayerBattleStatus1
 	ld a, [hl]
-	; clear bide, thrashing, charging up, and trapping moves such as warp (already cleared for confusion damage)
-	; and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE))
+	; clear thrashing, charging up, and trapping moves such as warp (already cleared for confusion damage)
 	and ~((1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE))
 	ld [hl], a
 	ld a, [wPlayerMoveEffect]
@@ -3486,55 +3485,6 @@ CheckPlayerStatusConditions:
 	ld hl, ExecutePlayerMoveDone
 	jp .returnToHL ; if using a two-turn move, we need to recharge the first turn
 
-;.BideCheck
-;	ld hl, wPlayerBattleStatus1
-;	bit STORING_ENERGY, [hl] ; is mon using bide?
-;	jr z, .ThrashingAboutCheck
-;	xor a
-;	ld [wPlayerMoveNum], a
-;	ld hl, wDamage
-;	ld a, [hli]
-;	ld b, a
-;	ld c, [hl]
-;	ld hl, wPlayerBideAccumulatedDamage + 1
-;	ld a, [hl]
-;	add c ; accumulate damage taken
-;	ld [hld], a
-;	ld a, [hl]
-;	adc b
-;	ld [hl], a
-;	ld hl, wPlayerNumAttacksLeft
-;	dec [hl] ; did Bide counter hit 0?
-;	jr z, .UnleashEnergy
-;	ld hl, ExecutePlayerMoveDone
-;	jp .returnToHL ; unless mon unleashes energy, can't move this turn
-;.UnleashEnergy
-;	ld hl, wPlayerBattleStatus1
-;	res STORING_ENERGY, [hl] ; not using bide any more
-;	ld hl, UnleashedEnergyText
-;	call PrintText
-;	ld a, 1
-;	ld [wPlayerMovePower], a
-;	ld hl, wPlayerBideAccumulatedDamage + 1
-;	ld a, [hld]
-;	add a
-;	ld b, a
-;	ld [wDamage + 1], a
-;	ld a, [hl]
-;	rl a ; double the damage
-;	ld [wDamage], a
-;	or b
-;	jr nz, .next
-;	ld a, 1
-;	ld [wMoveMissed], a
-;.next
-;	xor a
-;	ld [hli], a
-;	ld [hl], a
-;	ld a, BIDE
-;	ld [wPlayerMoveNum], a
-;	ld hl, handleIfPlayerMoveMissed ; skip damage calculation, DecrementPP and MoveHitTest
-;	jp .returnToHL
 
 .ThrashingAboutCheck
 	bit THRASHING_ABOUT, [hl] ; is mon using thrash or petal dance?
@@ -6020,8 +5970,7 @@ CheckEnemyStatusConditions:
 .monHurtItselfOrFullyParalysed
 	ld hl, wEnemyBattleStatus1
 	ld a, [hl]
-	; clear bide, thrashing, charging up, trapping moves such as wrap (already cleared for confusion damage), and invulnerable moves
-	; and ~((1 << STORING_ENERGY) | (1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE) | (1 << INVULNERABLE))
+	; clear thrashing, charging up, trapping moves such as wrap (already cleared for confusion damage), and invulnerable moves
 	and ~((1 << THRASHING_ABOUT) | (1 << CHARGING_UP) | (1 << USING_TRAPPING_MOVE) | (1 << INVULNERABLE_DIG) | (1 << INVULNERABLE_FLY))
 	ld [hl], a
 	ld a, [wEnemyMoveEffect]
@@ -6038,56 +5987,6 @@ CheckEnemyStatusConditions:
 .notFlyOrChargeEffect
 	ld hl, ExecuteEnemyMoveDone
 	jp .enemyReturnToHL ; if using a two-turn move, enemy needs to recharge the first turn
-;.checkIfUsingBide
-;	ld hl, wEnemyBattleStatus1
-;	bit STORING_ENERGY, [hl] ; is mon using bide?
-;	jr z, .checkIfThrashingAbout
-;	xor a
-;	ld [wEnemyMoveNum], a
-;	ld hl, wDamage
-;	ld a, [hli]
-;	ld b, a
-;	ld c, [hl]
-;	ld hl, wEnemyBideAccumulatedDamage + 1
-;	ld a, [hl]
-;	add c ; accumulate damage taken
-;	ld [hld], a
-;	ld a, [hl]
-;	adc b
-;	ld [hl], a
-;	ld hl, wEnemyNumAttacksLeft
-;	dec [hl] ; did Bide counter hit 0?
-;	jr z, .unleashEnergy
-;	ld hl, ExecuteEnemyMoveDone
-;	jp .enemyReturnToHL ; unless mon unleashes energy, can't move this turn
-;.unleashEnergy
-;	ld hl, wEnemyBattleStatus1
-;	res STORING_ENERGY, [hl] ; not using bide any more
-;	ld hl, UnleashedEnergyText
-;	call PrintText
-;	ld a, $1
-;	ld [wEnemyMovePower], a
-;	ld hl, wEnemyBideAccumulatedDamage + 1
-;	ld a, [hld]
-;	add a
-;	ld b, a
-;	ld [wDamage + 1], a
-;	ld a, [hl]
-;	rl a ; double the damage
-;	ld [wDamage], a
-;	or b
-;	jr nz, .next
-;	ld a, $1
-;	ld [wMoveMissed], a
-;.next
-;	xor a
-;	ld [hli], a
-;	ld [hl], a
-;	ld a, BIDE
-;	ld [wEnemyMoveNum], a
-;	call SwapPlayerAndEnemyLevels
-;	ld hl, handleIfEnemyMoveMissed ; skip damage calculation, DecrementPP and MoveHitTest
-;	jp .enemyReturnToHL
 .checkIfThrashingAbout
 	bit THRASHING_ABOUT, [hl] ; is mon using thrash or petal dance?
 	jr z, .checkIfUsingMultiturnMove
