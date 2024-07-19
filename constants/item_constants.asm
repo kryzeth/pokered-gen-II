@@ -168,7 +168,7 @@ DEF TM01 EQU const_value
 	add_tm TAKE_DOWN    ; $D1
 	add_tm DOUBLE_EDGE  ; $D2
 	add_tm BUBBLEBEAM   ; $D3
-	add_tm WATER_GUN    ; $D4
+	add_tm FLAMETHROWER ; $D4	Replaced Water Gun, since you get Bubblebeam immediately afterwards
 	add_tm ICE_BEAM     ; $D5
 	add_tm BLIZZARD     ; $D6
 	add_tm HYPER_BEAM   ; $D7
@@ -190,7 +190,7 @@ DEF TM01 EQU const_value
 	add_tm MIMIC        ; $E7
 	add_tm DOUBLE_TEAM  ; $E8
 	add_tm REFLECT      ; $E9
-	add_tm ROCK_THROW   ; $EA
+	add_tm ROCK_THROW   ; $EA	Replaced Bide, since I basically removed it from the game
 	add_tm METRONOME    ; $EB
 	add_tm SELFDESTRUCT ; $EC
 	add_tm EGG_BOMB     ; $ED

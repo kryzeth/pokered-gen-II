@@ -15,9 +15,9 @@
 
 	; tm/hm learnset
 	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   \
-	     WATER_GUN,    ICE_BEAM,     BLIZZARD,     RAGE,         PSYCHIC_M,    \
-	     MIMIC,        DOUBLE_TEAM,  SKULL_BASH,   REST,         PSYWAVE,      \
-		 SUBSTITUTE,   SURF
+	     ICE_BEAM,     BLIZZARD,     RAGE,         PSYCHIC_M,    MIMIC,        \
+		 DOUBLE_TEAM,  SKULL_BASH,   REST,         PSYWAVE,      SUBSTITUTE,   \
+		 SURF
 	; end
 
 	db BANK(PoliwagPicFront)

@@ -15,10 +15,10 @@
 
 	; tm/hm learnset
 	tmhm RAZOR_WIND,   SWORDS_DANCE, MEGA_KICK,    TOXIC,        BODY_SLAM,    \
-	     TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     \
-	     BLIZZARD,     HYPER_BEAM,   SUBMISSION,   SEISMIC_TOSS, RAGE,         \
-	     MIMIC,        DOUBLE_TEAM,  REFLECT,      ROCK_THROW,   SKULL_BASH,   \
-	     REST,         ROCK_SLIDE,	 SUBSTITUTE,   SURF
+	     TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   ICE_BEAM,     BLIZZARD,     \
+		 HYPER_BEAM,   SUBMISSION,   SEISMIC_TOSS, RAGE,         MIMIC,        \
+		 DOUBLE_TEAM,  REFLECT,      ROCK_THROW,   SKULL_BASH,   REST,         \
+		 ROCK_SLIDE,	 SUBSTITUTE,   SURF
 	; end
 
 	db BANK(KabutopsPicFront)
