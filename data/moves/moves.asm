@@ -70,7 +70,7 @@ Moves:
 	move HYDRO_PUMP,   NO_ADDITIONAL_EFFECT,       120, WATER,         80,  5
 	move SURF,         NO_ADDITIONAL_EFFECT,        95, WATER,        100, 15
 	move ICE_BEAM,     FREEZE_SIDE_EFFECT,          95, ICE,          100, 10
-	move BLIZZARD,     FREEZE_SIDE_EFFECT,         120, ICE,           90,  5
+	move BLIZZARD,     FREEZE_SIDE_EFFECT,         120, ICE,           75,  5	; Nerfed to 75 accuracy
 	move PSYBEAM,      CONFUSION_SIDE_EFFECT,       65, PSYCHIC_TYPE, 100, 20
 	move BUBBLEBEAM,   SPEED_DOWN_SIDE_EFFECT,      65, WATER,        100, 20
 	move AURORA_BEAM,  ATTACK_DOWN_SIDE_EFFECT,     65, ICE,          100, 20
@@ -99,7 +99,7 @@ Moves:
 	move THUNDERBOLT,  PARALYZE_SIDE_EFFECT1,       95, ELECTRIC,     100, 15
 	move THUNDER_WAVE, PARALYZE_EFFECT,              0, ELECTRIC,     100, 20
 	move THUNDER,      PARALYZE_SIDE_EFFECT1,      120, ELECTRIC,      70, 10
-	move ROCK_THROW,   NO_ADDITIONAL_EFFECT,        40, ROCK,          90, 15	; Rock Throw 40/90 from 50/65
+	move ROCK_THROW,   NO_ADDITIONAL_EFFECT,        40, ROCK,          95, 15	; Rock Throw 40/95 from 50/65
 	move EARTHQUAKE,   ANTI_DIG_EFFECT,		       100, GROUND,       100, 10	; Earthquake can hit opponent using Dig
 	move FISSURE,      OHKO_EFFECT,                  1, GROUND,        30,  5
 	move DIG,          CHARGE_EFFECT,              100, GROUND,       100, 10

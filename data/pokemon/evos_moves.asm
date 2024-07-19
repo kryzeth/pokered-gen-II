@@ -474,6 +474,7 @@ ShellderEvosMoves:
 	db EVOLVE_ITEM, WATER_STONE, 1, CLOYSTER
 	db 0
 ; Learnset
+	db 12, WATER_GUN
 	db 18, SUPERSONIC
 	db 23, CLAMP
 	db 30, AURORA_BEAM
@@ -759,6 +760,7 @@ PsyduckEvosMoves:
 	db EVOLVE_LEVEL, 33, GOLDUCK
 	db 0
 ; Learnset
+	db 12, WATER_GUN
 	db 28, TAIL_WHIP
 	db 31, DISABLE
 	db 36, CONFUSION
@@ -873,6 +875,7 @@ SeelEvosMoves:
 	db EVOLVE_LEVEL, 34, DEWGONG
 	db 0
 ; Learnset
+	db 12, WATER_GUN
 	db 30, GROWL
 	db 35, AURORA_BEAM
 	db 40, REST
@@ -950,6 +953,7 @@ DragoniteEvosMoves:
 	db 0
 ; Learnset
 	db 10, THUNDER_WAVE
+	db 15, WATER_GUN
 	db 20, AGILITY
 	db 35, SLAM
 	db 45, DRAGON_RAGE
@@ -1062,6 +1066,7 @@ KrabbyEvosMoves:
 	db EVOLVE_LEVEL, 28, KINGLER
 	db 0
 ; Learnset
+	db 12, WATER_GUN
 	db 20, VICEGRIP
 	db 25, GUILLOTINE
 	db 30, STOMP
@@ -1147,10 +1152,11 @@ MissingNo57EvosMoves:
 
 DratiniEvosMoves:
 ; Evolutions
-	db EVOLVE_LEVEL, 30, DRAGONAIR
+	db EVOLVE_LEVEL, 25, DRAGONAIR
 	db 0
 ; Learnset
 	db 10, THUNDER_WAVE
+	db 15, WATER_GUN
 	db 20, AGILITY
 	db 30, SLAM
 	db 40, DRAGON_RAGE
@@ -1159,10 +1165,11 @@ DratiniEvosMoves:
 
 DragonairEvosMoves:
 ; Evolutions
-	db EVOLVE_LEVEL, 55, DRAGONITE
+	db EVOLVE_LEVEL, 50, DRAGONITE
 	db 0
 ; Learnset
 	db 10, THUNDER_WAVE
+	db 15, WATER_GUN
 	db 20, AGILITY
 	db 35, SLAM
 	db 45, DRAGON_RAGE
@@ -1174,6 +1181,7 @@ KabutoEvosMoves:
 	db EVOLVE_LEVEL, 40, KABUTOPS
 	db 0
 ; Learnset
+	db 12, WATER_GUN
 	db 34, ABSORB
 	db 39, SLASH
 	db 44, LEER
@@ -1184,6 +1192,7 @@ KabutopsEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 12, WATER_GUN
 	db 34, ABSORB
 	db 39, SLASH
 	db 46, LEER
@@ -1510,6 +1519,7 @@ DewgongEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 12, WATER_GUN
 	db 30, GROWL
 	db 35, AURORA_BEAM
 	db 44, REST
@@ -1577,6 +1587,7 @@ GolduckEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 12, WATER_GUN
 	db 28, TAIL_WHIP
 	db 31, DISABLE
 	db 39, CONFUSION
@@ -1671,6 +1682,7 @@ KinglerEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 12, WATER_GUN
 	db 20, VICEGRIP
 	db 25, GUILLOTINE
 	db 34, STOMP
@@ -1682,6 +1694,7 @@ CloysterEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 12, WATER_GUN
 	db 18, SUPERSONIC
 	db 23, CLAMP
 	db 30, AURORA_BEAM
@@ -1877,6 +1890,7 @@ GoldeenEvosMoves:
 	db EVOLVE_LEVEL, 33, SEAKING
 	db 0
 ; Learnset
+	db 12, WATER_GUN
 	db 19, SUPERSONIC
 	db 24, HORN_ATTACK
 	db 30, FURY_ATTACK
@@ -1889,6 +1903,7 @@ SeakingEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 12, WATER_GUN
 	db 19, SUPERSONIC
 	db 24, HORN_ATTACK
 	db 30, FURY_ATTACK

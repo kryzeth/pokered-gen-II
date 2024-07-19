@@ -137,6 +137,7 @@ SeafoamIslandsB4F_TextPointers:
 	dw_const BoulderText,                       TEXT_SEAFOAMISLANDSB4F_BOULDER1
 	dw_const BoulderText,                       TEXT_SEAFOAMISLANDSB4F_BOULDER2
 	dw_const SeafoamIslandsB4FArticunoText,     TEXT_SEAFOAMISLANDSB4F_ARTICUNO
+	dw_const PickUpItemText,					TEXT_SEAFOAMISLANDSB4F_TM_BLIZZARD	; added
 	dw_const SeafoamIslandsB4FBouldersSignText, TEXT_SEAFOAMISLANDSB4F_BOULDERS_SIGN
 	dw_const SeafoamIslandsB4FDangerSignText,   TEXT_SEAFOAMISLANDSB4F_DANGER_SIGN
 

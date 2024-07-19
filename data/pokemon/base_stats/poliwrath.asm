@@ -15,11 +15,11 @@
 
 	; tm/hm learnset
 	tmhm MEGA_PUNCH,   MEGA_KICK,    TOXIC,        BODY_SLAM,    TAKE_DOWN,    \
-	     DOUBLE_EDGE,  BUBBLEBEAM,   WATER_GUN,    ICE_BEAM,     BLIZZARD,     \
-	     HYPER_BEAM,   SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         \
-	     EARTHQUAKE,   FISSURE,      PSYCHIC_M,    MIMIC,        DOUBLE_TEAM,  \
-	     ROCK_THROW,   METRONOME,    SKULL_BASH,   REST,         PSYWAVE,      \
-	     ROCK_SLIDE,   SUBSTITUTE,   SURF,         STRENGTH
+	     DOUBLE_EDGE,  BUBBLEBEAM,   ICE_BEAM,     BLIZZARD,     HYPER_BEAM,   \
+		 SUBMISSION,   COUNTER,      SEISMIC_TOSS, RAGE,         EARTHQUAKE,   \
+		 FISSURE,      PSYCHIC_M,    MIMIC,        DOUBLE_TEAM,  ROCK_THROW,   \
+		 METRONOME,    SKULL_BASH,   REST,         PSYWAVE,      ROCK_SLIDE,   \
+		 SUBSTITUTE,   SURF,         STRENGTH
 	; end
 
 	db BANK(PoliwrathPicFront)
