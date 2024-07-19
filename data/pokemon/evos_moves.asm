@@ -268,6 +268,7 @@ VoltorbEvosMoves:
 	db EVOLVE_LEVEL, 30, ELECTRODE
 	db 0
 ; Learnset
+	db 8, THUNDERSHOCK
 	db 17, SONICBOOM
 	db 22, SELFDESTRUCT
 	db 29, LIGHT_SCREEN
@@ -558,7 +559,8 @@ TangelaEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 29, ABSORB
+	db 27, ABSORB
+	db 29, VINE_WHIP
 	db 32, POISONPOWDER
 	db 36, STUN_SPORE
 	db 39, SLEEP_POWDER
@@ -1997,7 +1999,7 @@ GeodudeEvosMoves:
 	db 0
 ; Learnset
 	db 11, DEFENSE_CURL
-	db 12, ROCK_THROW
+	db 14, ROCK_THROW
 	db 21, SELFDESTRUCT
 	db 26, HARDEN
 	db 31, EARTHQUAKE
