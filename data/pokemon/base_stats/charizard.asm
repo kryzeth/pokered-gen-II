@@ -19,7 +19,7 @@
 	     SEISMIC_TOSS, RAGE,         DRAGON_RAGE,  EARTHQUAKE,   FISSURE,      \
 	     DIG,          MIMIC,        DOUBLE_TEAM,  REFLECT,      FIRE_BLAST,   \
 		 SWIFT,        SKULL_BASH,   REST,         SUBSTITUTE,   CUT,          \
-		 STRENGTH
+		 FLY,          STRENGTH
 	; end
 
 	db BANK(CharizardPicFront)
