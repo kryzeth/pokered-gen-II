@@ -10,13 +10,13 @@
 	INCBIN "gfx/pokemon/front/eevee.pic", 0, 1 ; sprite dimensions
 	dw EeveePicFront, EeveePicBack
 
-	db TACKLE, SAND_ATTACK, NO_MOVE, NO_MOVE ; level 1 learnset
+	db TACKLE, TAIL_WHIP, NO_MOVE, NO_MOVE ; level 1 learnset
 	db GROWTH_MEDIUM_FAST ; growth rate
 
 	; tm/hm learnset
-	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  RAGE,         \
-	     MIMIC,        DOUBLE_TEAM,  REFLECT,      SWIFT,        SKULL_BASH,   \
-		 REST,         SUBSTITUTE
+	tmhm TOXIC,        BODY_SLAM,    TAKE_DOWN,    DOUBLE_EDGE,  PAY_DAY,      \
+		 RAGE,         MIMIC,        DOUBLE_TEAM,  REFLECT,      SWIFT,        \
+		 SKULL_BASH,   REST,         SUBSTITUTE,   STRENGTH
 	; end
 
 	db BANK(EeveePicFront)
