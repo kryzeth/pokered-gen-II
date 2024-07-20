@@ -1455,11 +1455,11 @@ BeedrillEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 12, FURY_ATTACK
+	db 12, PIN_MISSILE
 	db 16, FOCUS_ENERGY
 	db 20, TWINEEDLE
 	db 25, RAGE
-	db 30, PIN_MISSILE
+	db 30, SHARPEN
 	db 35, AGILITY
 	db 0
 
@@ -1563,6 +1563,7 @@ ButterfreeEvosMoves:
 	db 17, SLEEP_POWDER
 	db 21, SUPERSONIC
 	db 26, WHIRLWIND
+	db 26, GUST
 	db 32, PSYBEAM
 	db 0
 

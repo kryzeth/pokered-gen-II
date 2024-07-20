@@ -48,4 +48,4 @@ ENDR
 .Steel:     db "STEEL@"
 .Dark:      db "DARK@"
 .Fairy:     db "FAIRY@"
-.PoisonLev: db "POISON-LEV@"
+.PoisonLev: db "POISON@"
