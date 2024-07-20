@@ -18,7 +18,7 @@
 	     TAKE_DOWN,    DOUBLE_EDGE,  BUBBLEBEAM,   ICE_BEAM,     BLIZZARD,     \
 		 HYPER_BEAM,   SUBMISSION,   SEISMIC_TOSS, RAGE,         MIMIC,        \
 		 DOUBLE_TEAM,  REFLECT,      ROCK_THROW,   SKULL_BASH,   REST,         \
-		 ROCK_SLIDE,	 SUBSTITUTE,   SURF
+		 ROCK_SLIDE,   SUBSTITUTE,   CUT,          SURF
 	; end
 
 	db BANK(KabutopsPicFront)

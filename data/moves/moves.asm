@@ -35,7 +35,7 @@ Moves:
 	move SLAM,         NO_ADDITIONAL_EFFECT,        80, DRAGON,        85, 20	; Slam is now Dragon, buffed from 75 to 85 acc
 	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        40, GRASS,        100, 25	; Buffed from 35 to 40 power, 10 to 25PP
 	move STOMP,        FLINCH_SIDE_EFFECT2,         65, NORMAL,       100, 20
-	move DOUBLE_KICK,  ATTACK_TWICE_EFFECT,         35, FIGHTING,     100, 30	; Buffed from 30 to 35 power (TBP 70)
+	move DOUBLE_KICK,  ATTACK_TWICE_EFFECT,         30, FIGHTING,     100, 30
 	move MEGA_KICK,    NO_ADDITIONAL_EFFECT,       120, NORMAL,        75,  5
 	move JUMP_KICK,    JUMP_KICK_EFFECT,            70, FIGHTING,      95, 25
 	move ROLLING_KICK, FLINCH_SIDE_EFFECT2,         60, FIGHTING,      85, 15
@@ -47,7 +47,7 @@ Moves:
 	move TACKLE,       NO_ADDITIONAL_EFFECT,        35, NORMAL,       100, 35	; Buffed from 95 to 100 acc
 	move BODY_SLAM,    PARALYZE_SIDE_EFFECT2,       85, NORMAL,       100, 15
 	move WRAP,         TRAPPING_EFFECT,             15, NORMAL,        85, 20
-	move TAKE_DOWN,    RECOIL_EFFECT,               90, NORMAL,        85, 20
+	move TAKE_DOWN,    RECOIL_EFFECT,               90, NORMAL,        95, 20	; Buffed from 85 to 95 acc
 	move THRASH,       THRASH_PETAL_DANCE_EFFECT,   90, NORMAL,       100, 20
 	move DOUBLE_EDGE,  RECOIL_EFFECT,              100, NORMAL,       100, 15
 	move TAIL_WHIP,    DEFENSE_DOWN1_EFFECT,         0, NORMAL,       100, 30
