@@ -33,9 +33,11 @@
 # Ignoring some common visual studio things
 .vs
 
-# Just some scripts for personal use
-*searcher.py
-*export*table.py
+# Just some scripts and files for personal use
+*searcher*.py
+*export*.py
+*.xlsx
+*.html
 
 #Action replay codes to enable debug mode
 *.clt
