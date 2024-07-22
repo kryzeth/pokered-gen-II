@@ -53,7 +53,7 @@ Moves:
 	move TAIL_WHIP,    DEFENSE_DOWN1_EFFECT,         0, NORMAL,       100, 30
 	move POISON_STING, POISON_SIDE_EFFECT1,         15, POISON,       100, 35
 	move TWINEEDLE,    TWINEEDLE_EFFECT,            45, BUG,          100, 20	; Buffed from 25 to 45 power (TBP 90)
-	move PIN_MISSILE,  TWO_TO_FIVE_ATTACKS_EFFECT,  18, BUG,           85, 20	; Buffed from 14 to 20 power (ABP 60)
+	move PIN_MISSILE,  TWO_TO_FIVE_ATTACKS_EFFECT,  20, BUG,           95, 20	; Buffed from 14/85 to 20/95 (ABP 60)
 	move LEER,         DEFENSE_DOWN1_EFFECT,         0, NORMAL,       100, 30
 	move BITE,         FLINCH_SIDE_EFFECT1,         60, DARK,		  100, 25	; Bite is now Dark
 	move GROWL,        ATTACK_DOWN1_EFFECT,          0, NORMAL,       100, 40
