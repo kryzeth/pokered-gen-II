@@ -35,9 +35,10 @@
 
 # Just some scripts and files for personal use
 *searcher*.py
-*export*.py
 *.xlsx
 *.html
+*/*data/*.json
+*/*resources/*moves.json
 
-#Action replay codes to enable debug mode
+# Action replay codes to enable debug and walk through walls
 *.clt
