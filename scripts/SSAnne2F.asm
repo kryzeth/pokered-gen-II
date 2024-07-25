@@ -66,8 +66,8 @@ SSAnne2FDefaultScript:
 	db -1 ; end
 
 .PlayerCoordinatesArray:
-	dbmapcoord 36,  8
-	dbmapcoord 37,  8
+	; dbmapcoord 36,  8		; Disabled trigger for Rival Fight, since it just freezes the game.
+	; dbmapcoord 37,  8		
 	db -1 ; end
 
 SSAnne2FSetFacingDirectionScript:
@@ -115,6 +115,8 @@ SSAnne2FRivalStartBattleScript:
 	ld a, $3
 .done
 	ld [wTrainerNo], a
+	ld a, 1
+	ld [wIsTrainerBattle], a
 
 	call SSAnne2FSetFacingDirectionScript
 	ld a, SCRIPT_SSANNE2F_RIVAL_AFTER_BATTLE
@@ -125,6 +127,8 @@ SSAnne2FRivalAfterBattleScript:
 	ld a, [wIsInBattle]
 	cp $ff
 	jp z, SSAnne2FResetScripts
+	xor a
+	ld [wIsTrainerBattle], a
 	call SSAnne2FSetFacingDirectionScript
 	ld a, D_RIGHT | D_LEFT | D_UP | D_DOWN
 	ld [wJoyIgnore], a
