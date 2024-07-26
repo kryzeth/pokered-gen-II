@@ -98,6 +98,7 @@ TryDoWildEncounter:
 	ret
 .willEncounter
 	xor a
+	ld [wIsTrainerBattle], a
 	ret
 
 TestGrassTile:
