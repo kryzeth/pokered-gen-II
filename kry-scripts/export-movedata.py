@@ -101,7 +101,7 @@ def save_to_json(data, file_path):
 if __name__ == "__main__":
     moves_asm_path = "../data/moves/moves.asm"
     item_constants_path = "../constants/item_constants.asm"
-    output_json_path = "../kry-scripts/movedata/moves.json"
+    output_json_path = "../kry-scripts/resources/moves.json"
     
     if not os.path.exists(os.path.dirname(output_json_path)):
         os.makedirs(os.path.dirname(output_json_path))

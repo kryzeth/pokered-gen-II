@@ -56,7 +56,10 @@ def generate_html(name, level_up_learnset, tmhm_learnset, move_data, effect_desc
         additional_effect_code = move_data.get("Additional Effect", "").strip()
 
         # Fetch additional effect description
-        additional_effect = effect_descriptions.get(additional_effect_code, "Unknown effect")
+        if additional_effect_code:
+            additional_effect = effect_descriptions.get(additional_effect_code, "Unknown effect")
+        else:
+            additional_effect = "No additional effect"
 
         move_details = f"""
         <h2>Move Details</h2>
