@@ -124,6 +124,7 @@ TypeEffects:
 	db FAIRY,		 BUG,		   NOT_VERY_EFFECTIVE	; Nature should also lose to Bugs. Implemented.
 	db POISON,		 FAIRY,		   SUPER_EFFECTIVE		; Poison destroys Nature.
 	db GHOST,		 FAIRY,		   NOT_VERY_EFFECTIVE	; Ghost can't affect Nature? Fairy needed another Resist. Implemented.
+	db PSYCHIC_TYPE, BUG,		   NOT_VERY_EFFECTIVE	; Mind cannot control Bugs, buffs Bug/Poison matchup. Implemented.
 ;	This section is just a duplicate of defensive Poison matchups, for levitating Poison types.
 	db GRASS,        POISON_LEV,	NOT_VERY_EFFECTIVE
 	db FIGHTING,     POISON_LEV,	NOT_VERY_EFFECTIVE
