@@ -117,7 +117,7 @@ DEF SHOW EQU $15
 	const HS_MT_MOON_1F_ITEM_3             ; 69 X
 	const HS_MT_MOON_1F_ITEM_4             ; 6A X
 	const HS_MT_MOON_1F_ITEM_5             ; 6B X
-	const HS_MT_MOON_1F_ITEM_6             ; 6C X
+;	const HS_MT_MOON_1F_ITEM_6             ; 6C X	Removed TM Water Gun
 	const HS_MT_MOON_B2F_FOSSIL_1          ; 6D
 	const HS_MT_MOON_B2F_FOSSIL_2          ; 6E
 	const HS_MT_MOON_B2F_ITEM_1            ; 6F X
@@ -237,4 +237,5 @@ DEF SHOW EQU $15
 	const HS_SEAFOAM_ISLANDS_B4F_BOULDER_1 ; E1
 	const HS_SEAFOAM_ISLANDS_B4F_BOULDER_2 ; E2
 	const HS_ARTICUNO                      ; E3 X
+	const HS_SEAFOAM_ISLANDS_B4F_ITEM1	   ; E3 X TM Blizzard
 DEF NUM_HS_OBJECTS EQU const_value
