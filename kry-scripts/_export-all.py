@@ -9,8 +9,10 @@ def run_script(script_name):
     if result.returncode != 0:
         print(f"Error running {script_name}:")
         print(result.stderr)
+        return False
     else:
         print(f"{script_name} completed successfully.")
+        return True
 
 def main():
     scripts = [
@@ -22,8 +24,17 @@ def main():
         "export-webpage-movedata.py"
     ]
     
+    all_successful = True
     for script in scripts:
-        run_script(script)
+        if not run_script(script):
+            all_successful = False
+
+    if all_successful:
+        print("All scripts completed successfully.")
+    else:
+        print("Some scripts encountered errors.")
+
+    input("Press any key to close...")
 
 if __name__ == "__main__":
     main()
