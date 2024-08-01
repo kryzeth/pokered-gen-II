@@ -21,12 +21,15 @@ MonsterPalettes:
 	db PAL_PIDGEOT
 	db PAL_RATTATA
 	db PAL_RATICATE
+	db PAL_MEWMON		; A_Rattata
+	db PAL_MEWMON		; A_Raticate
 	db PAL_SPEAROW
 	db PAL_FEAROW
 	db PAL_EKANS
 	db PAL_ARBOK
 	db PAL_PIKACHU
 	db PAL_RAICHU
+	db PAL_MEWMON		; A_Raichu
 	db PAL_SANDSHREW
 	db PAL_SANDSLASH
 	db PAL_NIDORAN_F
@@ -39,30 +42,42 @@ MonsterPalettes:
 	db PAL_CLEFABLE
 	db PAL_VULPIX
 	db PAL_NINETALES
+	db PAL_MEWMON		; A_Vulpix
+	db PAL_MEWMON		; A_Ninetales
 	db PAL_JIGGLYPUFF
 	db PAL_WIGGLYTUFF
 	db PAL_ZUBAT
 	db PAL_GOLBAT
+	db PAL_CROBAT		; Crobat
 	db PAL_ODDISH
 	db PAL_GLOOM
 	db PAL_VILEPLUME
+	db PAL_MEWMON		; Oddish
 	db PAL_PARAS
 	db PAL_PARASECT
 	db PAL_VENONAT
 	db PAL_VENOMOTH
 	db PAL_DIGLETT
 	db PAL_DUGTRIO
+	db PAL_MEWMON		; A_Diglett
+	db PAL_MEWMON		; A_Dugtrio
 	db PAL_MEOWTH
 	db PAL_PERSIAN
+	db PAL_MEWMON		; A_Persian
+	db PAL_MEWMON		; Perrserker
 	db PAL_PSYDUCK
 	db PAL_GOLDUCK
 	db PAL_MANKEY
 	db PAL_PRIMEAPE
+	db PAL_MEWMON		; Annihilape
 	db PAL_GROWLITHE
 	db PAL_ARCANINE
+	db PAL_MEWMON		; H_Growlithe
+	db PAL_MEWMON		; H_Arcanine
 	db PAL_POLIWAG
 	db PAL_POLIWHIRL
 	db PAL_POLIWRATH
+	db PAL_MEWMON		; Politoed
 	db PAL_ABRA
 	db PAL_KADABRA
 	db PAL_ALAKAZAM
@@ -77,12 +92,17 @@ MonsterPalettes:
 	db PAL_GEODUDE
 	db PAL_GRAVELER
 	db PAL_GOLEM
+	db PAL_MEWMON		; A_Gedodude
+	db PAL_MEWMON		; A_Graveler
+	db PAL_MEWMON		; A_Golem
 	db PAL_PONYTA
 	db PAL_RAPIDASH
 	db PAL_SLOWPOKE
 	db PAL_SLOWBRO
+	db PAL_MEWMON		; Slowking
 	db PAL_MAGNEMITE
 	db PAL_MAGNETON
+	db PAL_MEWMON		; Magnezone
 	db PAL_FARFETCHD
 	db PAL_DODUO
 	db PAL_DODRIO
@@ -90,43 +110,58 @@ MonsterPalettes:
 	db PAL_DEWGONG
 	db PAL_GRIMER
 	db PAL_MUK
+	db PAL_MEWMON		; A_Grimer
+	db PAL_MEWMON		; A_Muk
 	db PAL_SHELLDER
 	db PAL_CLOYSTER
 	db PAL_GASTLY
 	db PAL_HAUNTER
 	db PAL_GENGAR
 	db PAL_ONIX
+	db PAL_MEWMON		; Steelix
 	db PAL_DROWZEE
 	db PAL_HYPNO
 	db PAL_KRABBY
 	db PAL_KINGLER
 	db PAL_VOLTORB
 	db PAL_ELECTRODE
+	db PAL_MEWMON		; H_Voltorb
+	db PAL_MEWMON		; H_Electrode
 	db PAL_EXEGGCUTE
 	db PAL_EXEGGUTOR
+	db PAL_MEWMON		; A_Exeggutor
 	db PAL_CUBONE
 	db PAL_MAROWAK
+	db PAL_MEWMON		; A_Marowak
 	db PAL_HITMONLEE
 	db PAL_HITMONCHAN
 	db PAL_LICKITUNG
+	db PAL_MEWMON		; Lickilicky
 	db PAL_KOFFING
 	db PAL_WEEZING
 	db PAL_RHYHORN
 	db PAL_RHYDON
+	db PAL_MEWMON		; Rhyperior
 	db PAL_CHANSEY
+	db PAL_MEWMON		; Blissey
 	db PAL_TANGELA
+	db PAL_MEWMON		; Tangrowth
 	db PAL_KANGASKHAN
 	db PAL_HORSEA
 	db PAL_SEADRA
+	db PAL_MEWMON		; Kingdra
 	db PAL_GOLDEEN
 	db PAL_SEAKING
 	db PAL_STARYU
 	db PAL_STARMIE
 	db PAL_MR_MIME
 	db PAL_SCYTHER
+	db PAL_MEWMON		; Scizor
 	db PAL_JYNX
 	db PAL_ELECTABUZZ
+	db PAL_MEWMON		; Electivire
 	db PAL_MAGMAR
+	db PAL_MEWMON		; Magmrotar
 	db PAL_PINSIR
 	db PAL_TAUROS
 	db PAL_MAGIKARP
@@ -137,7 +172,14 @@ MonsterPalettes:
 	db PAL_VAPOREON
 	db PAL_JOLTEON
 	db PAL_FLAREON
+	db PAL_MEWMON		; Espeon
+	db PAL_MEWMON		; Umbreon
+	db PAL_MEWMON		; Leafeon
+	db PAL_MEWMON		; Glaceon
+	db PAL_MEWMON		; Sylveon
 	db PAL_PORYGON
+	db PAL_MEWMON		; Porygon2
+	db PAL_MEWMON		; PorygonZ
 	db PAL_OMANYTE
 	db PAL_OMASTAR
 	db PAL_KABUTO
@@ -152,7 +194,17 @@ MonsterPalettes:
 	db PAL_DRAGONITE
 	db PAL_MEWTWO
 	db PAL_MEW
-	db PAL_CROBAT
+	db PAL_MEWMON		; Yanma
+	db PAL_MEWMON		; Yanmega
+	db PAL_MEWMON		; Murkrow
+	db PAL_MEWMON		; Honchkrow
+	db PAL_MEWMON		; Sneasel
+	db PAL_MEWMON		; Weavile
+	db PAL_MEWMON		; Houndour
+	db PAL_MEWMON		; Houndoom
+	db PAL_MEWMON		; Larvitar
+	db PAL_MEWMON		; Pupitar
+	db PAL_MEWMON		; Tyranitar
 	assert_table_length NUM_POKEMON + 1
 
 TrainerPalettes:
