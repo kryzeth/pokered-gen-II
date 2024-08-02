@@ -43,13 +43,13 @@ ItemNames::
 	li "DOME FOSSIL"
 	li "HELIX FOSSIL"
 	li "SECRET KEY"
-	li "?????" ; ITEM_2C
+	li "METAL COAT" ; ITEM_2C was unused
 	li "BIKE VOUCHER"
 	li "X ACCURACY"
 	li "LEAF STONE"
 	li "CARD KEY"
 	li "NUGGET"
-	li "PP UP" ; ITEM_32
+	li "KING's ROCK" ; ITEM_32 was unused
 	li "POKé DOLL"
 	li "FULL HEAL"
 	li "REVIVE"
@@ -75,14 +75,16 @@ ItemNames::
 	li "POKé FLUTE"
 	li "LIFT KEY"
 	li "EXP.ALL"
-	li "OLD ROD"
-	li "GOOD ROD"
+	li "SUN STONE"
+	li "ICE STONE"
 	li "SUPER ROD"
 	li "PP UP"
 	li "ETHER"
 	li "MAX ETHER"
 	li "ELIXER"
 	li "MAX ELIXER"
+	li "OLD ROD"
+	li "GOOD ROD"
 	assert_list_length NUM_ITEMS
 	li "B2F"
 	li "B1F"

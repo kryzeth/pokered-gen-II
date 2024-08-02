@@ -31,9 +31,9 @@ ItemPrices::
 	bcd3 550   ; ESCAPE_ROPE
 	bcd3 350   ; REPEL
 	bcd3 0     ; OLD_AMBER
-	bcd3 2100  ; FIRE_STONE
-	bcd3 2100  ; THUNDER_STONE
-	bcd3 2100  ; WATER_STONE
+	bcd3 2000  ; FIRE_STONE
+	bcd3 2000  ; THUNDER_STONE
+	bcd3 2000  ; WATER_STONE
 	bcd3 9800  ; HP_UP
 	bcd3 9800  ; PROTEIN
 	bcd3 9800  ; IRON
@@ -43,13 +43,13 @@ ItemPrices::
 	bcd3 0     ; DOME_FOSSIL
 	bcd3 0     ; HELIX_FOSSIL
 	bcd3 0     ; SECRET_KEY
-	bcd3 0     ; ITEM_2C
+	bcd3 2000  ; METAL_COAT		was unused
 	bcd3 0     ; BIKE_VOUCHER
 	bcd3 950   ; X_ACCURACY
-	bcd3 2100  ; LEAF_STONE
+	bcd3 2000  ; LEAF_STONE
 	bcd3 0     ; CARD_KEY
 	bcd3 10000 ; NUGGET
-	bcd3 9800  ; ITEM_32
+	bcd3 2000  ; KINGS_ROCK		was unused
 	bcd3 1000  ; POKE_DOLL
 	bcd3 600   ; FULL_HEAL
 	bcd3 1500  ; REVIVE
@@ -75,14 +75,16 @@ ItemPrices::
 	bcd3 0     ; POKE_FLUTE
 	bcd3 0     ; LIFT_KEY
 	bcd3 0     ; EXP_ALL
-	bcd3 0     ; OLD_ROD
-	bcd3 0     ; GOOD_ROD
+	bcd3 10  ; SUN_STONE
+	bcd3 10  ; ICE_STONE
 	bcd3 0     ; SUPER_ROD
 	bcd3 0     ; PP_UP
 	bcd3 0     ; ETHER
 	bcd3 0     ; MAX_ETHER
 	bcd3 0     ; ELIXER
 	bcd3 0     ; MAX_ELIXER
+	bcd3 0     ; OLD_ROD
+	bcd3 0     ; GOOD_ROD
 	assert_table_length NUM_ITEMS
 	bcd3 0     ; FLOOR_B2F
 	bcd3 0     ; FLOOR_B1F

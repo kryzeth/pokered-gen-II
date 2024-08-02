@@ -1022,9 +1022,9 @@ RemoveFaintedPlayerMon:
 	call WaitForSoundToFinish
 .skipWaitForSound
 ; a is 0, so this zeroes the enemy's accumulated damage.
-	ld hl, wEnemyBideAccumulatedDamage
-	ld [hli], a
-	ld [hl], a
+;	ld hl, wEnemyBideAccumulatedDamage
+;	ld [hli], a
+;	ld [hl], a
 	ld [wBattleMonStatus], a
 	call ReadPlayerMonCurHPAndStatus
 	hlcoord 9, 7

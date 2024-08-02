@@ -43,13 +43,13 @@ KeyItemFlags:
 	dbit TRUE  ; DOME_FOSSIL
 	dbit TRUE  ; HELIX_FOSSIL
 	dbit TRUE  ; SECRET_KEY
-	dbit TRUE  ; ITEM_2C
+	dbit FALSE ; METAL_COAT		was unused
 	dbit TRUE  ; BIKE_VOUCHER
 	dbit FALSE ; X_ACCURACY
 	dbit FALSE ; LEAF_STONE
 	dbit TRUE  ; CARD_KEY
 	dbit FALSE ; NUGGET
-	dbit FALSE ; ITEM_32
+	dbit FALSE ; KINGS_ROCK		was unused
 	dbit FALSE ; POKE_DOLL
 	dbit FALSE ; FULL_HEAL
 	dbit FALSE ; REVIVE
@@ -75,12 +75,14 @@ KeyItemFlags:
 	dbit TRUE  ; POKE_FLUTE
 	dbit TRUE  ; LIFT_KEY
 	dbit FALSE ; EXP_ALL
-	dbit TRUE  ; OLD_ROD
-	dbit TRUE  ; GOOD_ROD
+	dbit FALSE ; SUN_STONE
+	dbit FALSE ; ICE_STONE
 	dbit TRUE  ; SUPER_ROD
 	dbit FALSE ; PP_UP
 	dbit FALSE ; ETHER
 	dbit FALSE ; MAX_ETHER
 	dbit FALSE ; ELIXER
 	dbit FALSE ; MAX_ELIXER
+	dbit TRUE  ; OLD_ROD
+	dbit TRUE  ; GOOD_ROD
 	end_bit_array NUM_ITEMS

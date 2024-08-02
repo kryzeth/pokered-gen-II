@@ -505,9 +505,9 @@ wPlayerMonMinimized:: db
 ; number of hits by enemy in attacks like Double Slap, etc.
 wEnemyNumHits:: ; db
 ; the amount of damage accumulated by the enemy while biding
-wEnemyBideAccumulatedDamage:: dw
+;wEnemyBideAccumulatedDamage:: dw
 
-	ds 8
+;	ds 8
 wMiscBattleDataEnd::
 ENDU
 
@@ -893,6 +893,10 @@ wNumMovesMinusOne:: db
 
 UNION
 wcd6d:: ds NAME_BUFFER_LENGTH ; buffer for various data
+
+NEXTU
+wEvosMoves:: ds MAX_EVOLUTIONS * EVOLUTION_SIZE + 1
+wEvosMovesEnd::
 
 NEXTU
 	ds 4
@@ -2338,7 +2342,7 @@ wEXPBarKeepFullFlag:: ds 1
 SECTION "Stack", WRAM0
 
 ; the stack grows downward
-	ds $100 - 1
+	ds $99 - 1
 wStack:: db
 
 ENDSECTION
