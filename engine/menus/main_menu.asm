@@ -127,7 +127,7 @@ MainMenu:
 InitOptions:
 	ld a, TEXT_DELAY_FAST
 	ld [wLetterPrintingDelayFlags], a
-	ld a, TEXT_DELAY_MEDIUM
+	ld a, TEXT_DELAY_FAST		; should set fast text speed by default (copied from Red++)
 	ld [wOptions], a
 	ret
 
@@ -462,6 +462,7 @@ DisplayOptionMenu:
 	hlcoord 2, 16
 	ld de, OptionMenuCancelText
 	call PlaceString
+	call ShowLaglessTextSetting		; this function copied from ShinPokemonRed
 	xor a
 	ld [wCurrentMenuItem], a
 	ld [wLastMenuItem], a
@@ -567,6 +568,9 @@ DisplayOptionMenu:
 .pressedLeftInTextSpeed
 	ld a, [wOptionsTextSpeedCursorX] ; text speed cursor X coordinate
 	cp 1
+	push af
+	call z, ToggleLaglessText	;joenote - for lagless text option
+	pop af
 	jr z, .updateTextSpeedXCoord
 	cp 7
 	jr nz, .fromSlowToMedium
@@ -604,6 +608,34 @@ BattleStyleOptionText:
 OptionMenuCancelText:
 	db "CANCEL@"
 
+;joenote - for lagless text option
+OptionMenuLaglessText:
+	dw OptionMenuLaglessTextON
+	dw OptionMenuLaglessTextOFF
+OptionMenuLaglessTextON:
+	db "!@"
+OptionMenuLaglessTextOFF:
+	db " @"
+ToggleLaglessText:
+	ld a, [wOptions]
+	xor %00000001
+	ld [wOptions], a
+	;fall through
+ShowLaglessTextSetting:
+	ld hl, OptionMenuLaglessText
+	ld a, [wOptions]
+	and %00001111
+	jr z, .print
+	inc hl
+	inc hl
+.print
+	ld e, [hl]
+	inc hl
+	ld d, [hl]
+	coord hl, $06, $03
+	call PlaceString
+	ret
+
 ; sets the options variable according to the current placement of the menu cursors in the options menu
 SetOptionsFromCursorPositions:
 	ld hl, TextSpeedOptionData
@@ -616,7 +648,16 @@ SetOptionsFromCursorPositions:
 	inc hl
 	jr .loop
 .textSpeedMatchFound
+	;joenote - set cursor position for lagless text
+	push hl
+	coord hl, $06, $03
 	ld a, [hl]
+	cp "!"
+	pop hl
+	ld a, [hl]
+	jr nz, .settextspeed
+	xor a
+.settextspeed
 	ld d, a
 	ld a, [wOptionsBattleAnimCursorX] ; battle animation cursor X coordinate
 	dec a
@@ -651,7 +692,13 @@ SetCursorPositionsFromOptions:
 	call IsInArray
 	pop bc
 	dec hl
+	;joenote - set cursor position for lagless text
+	ld a, [wOptions]
+	and %00001111
 	ld a, [hl]
+	jr nz, .settextspeed
+	ld a, 1
+.settextspeed
 	ld [wOptionsTextSpeedCursorX], a ; text speed cursor X coordinate
 	hlcoord 0, 3
 	call .placeUnfilledRightArrow
