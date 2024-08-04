@@ -1,40 +1,30 @@
-;this function handles quick-use of fishing and biking
+; this function handles quick-use of fishing and biking
 TryRodBike::	; predef
-	xor a
-.setUp
-	ld a,BICYCLE
-	ld [wcf91],a
-	ld [wPseudoItemID],a
-	ld [wd11e],a ; store item ID for GetItemName
-	call GetItemName
+	xor a					; clears the variable
+	ld a,BICYCLE			; loads bike into a
+	ld [wcf91],a			; loads a into item_use variable for UseItem
+	ld [wPseudoItemID],a	; loads a into this variable to skip writing text during ItemUseBicycle script
+	ld [wd11e],a			; loads a into item_name variable for GetItemName
+	call GetItemName		; get the item name into de register
 	call CopyToStringBuffer ; copy name to wStringBuffer
 .tryForBike
+	ld a,[wWalkBikeSurfState]	; loads walk/bike/surf state into a
+	cp a,1						; check if already on bike (a=1)
+	jr z,.useItem				; if true, skip to useitem (always allowed to get off bike, even if no bike in inventory)
 	ld b,BICYCLE
-	call IsItemInBag
-	jr nz,.hasBike
-	call EnableBikeShortcutText
-	ld hl,TextNoBike ; if no bike
-	call PrintText
-	jr .cleanUp
-.hasBike
-	farcall IsBikeRidingAllowed
-	jr c,.checkSurfing
-	call EnableBikeShortcutText
-.checkSurfing
-	ld a,[wWalkBikeSurfState]
-	cp a,2
-	jr nz,.checkCyclingRoad ; if not surfing
-	call EnableBikeShortcutText
-.checkCyclingRoad
-	ld a,[wd732] ; cycling road
-	bit 5,a
-	jr z,.useItem ;if not on cycling road skip text
-	call EnableBikeShortcutText
+	call IsItemInBag			; check if item in bag
+	jr nz,.useItem				; if yes, skip to hasBike, else
+	call EnableBikeShortcutText	; prepare to write text
+	ld hl,TextNoBike			; load text for NoBike into hl for PrintText
+	call PrintText				; prints the NoBike text
+	jr .cleanUp					; close text and does not return
 .useItem
-	call UseItem
+	call EnableBikeShortcutText	; readies text box
+	call UseItem				; uses the item stored in [wcf91]
+								; this function DOES return with some edits to item_effects.asm
 .cleanUp
-	call CloseBikeShortcutText
-	ret
+	call CloseBikeShortcutText	; create an empty textbox that auto-closes
+	ret							; without it, npc sprites are reloaded, facing downwards for a second or two.
 
 TextNoBike:
 	text_far _NoBicycleText

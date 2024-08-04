@@ -8,20 +8,23 @@ TryRodBike::	; predef
 	call GetItemName		; get the item name into de register
 	call CopyToStringBuffer ; copy name to wStringBuffer
 .tryForBike
+	ld a,[wWalkBikeSurfState]	; loads walk/bike/surf state into a
+	cp a,1						; check if already on bike (a=1)
+	jr z,.useItem				; if true, skip to useitem (always allowed to get off bike, even if no bike in inventory)
 	ld b,BICYCLE
-	call IsItemInBag		; check if item in bag
-	jr nz,.hasBike			; if yes, skip to hasBike, else
+	call IsItemInBag			; check if item in bag
+	jr nz,.useItem				; if yes, skip to hasBike, else
 	call EnableBikeShortcutText	; prepare to write text
 	ld hl,TextNoBike			; load NoBike into hl for PrintText
 	call PrintText				; prints the NoBike text
 	jr .cleanUp					; close text and does not return
-.hasBike
+;.hasBike
 ;	farcall IsBikeRidingAllowed	; biking is always allowed, so always returns true anyways
 ;	jr c,.checkSurfing
 ;	call EnableBikeShortcutText	; I don't know why this is here if the text is not closed
 ;.checkSurfing
-	ld a,[wWalkBikeSurfState]	; loads walk/bike/surf state into a
-	cp a,2						; check if surfing (a=2)
+;	ld a,[wWalkBikeSurfState]	; loads walk/bike/surf state into a
+;	cp a,2						; check if surfing (a=2)
 ;	jr nz,.checkCyclingRoad		; if not surfing
 ;	call EnableBikeShortcutText	; I don't know why this is here if the text is not closed
 ;.checkCyclingRoad
@@ -32,7 +35,7 @@ TryRodBike::	; predef
 .useItem
 	call EnableBikeShortcutText
 	call UseItem				; uses the item stored in [wcf91]
-								; I don't think this functions returns
+								; this function DOES return with some edits to item_effects.asm
 .cleanUp
 	call CloseBikeShortcutText
 	ret
