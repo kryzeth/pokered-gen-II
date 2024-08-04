@@ -683,6 +683,7 @@ INCLUDE "engine/events/in_game_trades.asm"
 INCLUDE "engine/gfx/palettes.asm"
 INCLUDE "engine/menus/save.asm"
 INCLUDE "engine/overworld/field_moves.asm"
+INCLUDE "engine/overworld/select_bike_rod3.asm"
 
 
 SECTION "Itemfinder 1", ROMX

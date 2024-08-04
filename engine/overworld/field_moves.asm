@@ -16,10 +16,10 @@ TrySurf:
 	jr c, .no
 	ld d, SURF
 	call HasPartyMove
-	jr nz, .no
+	jr nz, .no3
 	ld a, [wObtainedBadges]
 	bit 4, a ; SOUL BADGE
-	jr z, .no
+	jr z, .no3
 	callfar IsSurfingAllowed
 	ld hl, wd728
 	bit 1, [hl]
@@ -48,6 +48,12 @@ TrySurf:
 	ld a, 1
 	and a
 	ret
+.no3
+	call InitializeFieldMoveTextBox
+	ld hl, CalmSurfText
+	call PrintText
+	call ManualTextScroll
+	call CloseFieldMoveTextBox
 
 TryCut:
 	call IsCutTile
@@ -157,6 +163,10 @@ CloseFieldMoveTextBox:
 	ld a,[hLoadedROMBank]
 	push af
 	jp CloseTextDisplay
+
+CalmSurfText:
+	text_far _CalmSurfText
+	text_end
 
 PromptToSurfText:
 	text_far _PromptToSurfText

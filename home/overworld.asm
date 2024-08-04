@@ -73,12 +73,18 @@ OverworldLoopLessDelay::
 	ldh a, [hJoyPressed]
 .checkIfStartIsPressed
 	bit BIT_START, a
-	jr z, .startButtonNotPressed
+	jr z, .checkIfSelectIsPressed
 ; if START is pressed
 	xor a ; TEXT_START_MENU
 	ldh [hSpriteIndexOrTextID], a
 	jp .displayDialogue
-.startButtonNotPressed
+.checkIfSelectIsPressed
+	bit BIT_SELECT, a
+	jr z, .checkIfAButtonIsPressed
+; if SELECT is pressed
+	farcall TryRodBike
+;	jp OverworldLoop
+.checkIfAButtonIsPressed
 	bit BIT_A_BUTTON, a
 	jp z, .checkIfDownButtonIsPressed
 ; if A is pressed
@@ -401,13 +407,13 @@ DoBikeSpeedup::
 	ld a, [wNPCMovementScriptPointerTableNum]
 	and a
 	ret nz
-    ; Remove the check for ROUTE_17
-    ;ld a, [wCurMap]
-    ;cp ROUTE_17 ; Cycling Road
-    ;jr nz, .goFaster
-    ;ldh a, [hJoyHeld]
-    ;and D_UP | D_LEFT | D_RIGHT
-    ;ret nz
+;	Remove the check for ROUTE_17
+;	ld a, [wCurMap]
+;	cp ROUTE_17 ; Cycling Road
+;	jr nz, .goFaster
+;	ldh a, [hJoyHeld]
+;	and D_UP | D_LEFT | D_RIGHT
+;	ret nz
 .goFaster
 	jp AdvancePlayerSprite
 
@@ -870,26 +876,26 @@ IsBikeRidingAllowed::
 ; The bike can be used on Route 23 and Indigo Plateau,
 ; or maps with tilesets in BikeRidingTilesets.
 ; Return carry if biking is allowed.
+; I want to ride my bicycle - Queen
+;	ld a, [wCurMap]
+;	cp ROUTE_23
+;	jr z, .allowed
+;	cp INDIGO_PLATEAU
+;	jr z, .allowed
 
-	ld a, [wCurMap]
-	cp ROUTE_23
-	jr z, .allowed
-	cp INDIGO_PLATEAU
-	jr z, .allowed
+;	ld a, [wCurMapTileset]
+;	ld b, a
+;	ld hl, BikeRidingTilesets
+;.loop
+;	ld a, [hli]
+;	cp b
+;	jr z, .allowed
+;	inc a
+;	jr nz, .loop
+;	and a
+;	ret
 
-	ld a, [wCurMapTileset]
-	ld b, a
-	ld hl, BikeRidingTilesets
-.loop
-	ld a, [hli]
-	cp b
-	jr z, .allowed
-	inc a
-	jr nz, .loop
-	and a
-	ret
-
-.allowed
+;.allowed
 	scf
 	ret
 

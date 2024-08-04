@@ -26,6 +26,12 @@ _GotOffBicycleText2::
 	text "."
 	prompt
 
+_NoBicycleText::
+	text "Pressing SELECT"
+	line "uses the BICYCLE"
+	cont "if you have one."
+	prompt
+
 _ThrewAwayItemText::
 	text "Threw away"
 	line "@"

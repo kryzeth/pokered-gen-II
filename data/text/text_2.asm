@@ -1789,6 +1789,13 @@ _ContCharText::
 	text "<_CONT>@"
 	text_end
 
+_CalmSurfText::
+	text "The water is calm."
+
+	para "Looks like a good"
+	line "place to SURF."
+	done
+
 _PromptToSurfText::
 	text "The water is calm."
 	line "Would you like to"
