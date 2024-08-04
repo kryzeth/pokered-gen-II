@@ -26,9 +26,10 @@ _GotOffBicycleText2::
 	text "."
 	prompt
 
-_NoBicycleText::
+_NoBikeRodText::
 	text "Pressing SELECT"
 	line "uses the BICYCLE"
+	cont "or FISHING ROD"
 	cont "if you have one."
 	prompt
 

@@ -1,13 +1,10 @@
 ; this function handles quick-use of fishing and biking
-TryBikeRod::	; predef
+TryRodBike::	; predef
 	xor a					; clears the variable
-	ld a, [wWalkBikeSurfState]			; load surf state
-	cp 2								; is the player already surfing?
-	jr z, .notFishing					; can't fish while surfing
-	callfar IsNextTileShoreOrWater		; apparently unsets c if player is facing water or shore
-	jr c, .notFishing					; if c is set, then not facing water tiles, so skip to bike script
+	callfar IsNextTileShoreOrWater	; apparently unsets c if player is facing water or shore
+	jr c, .notFishing		; if c is set, then not facing water tiles, so skip to bike script
 	ld hl, TilePairCollisionsWater		; loads whatever this is into hl, probably for the following check
-	call CheckForTilePairCollisions2	; I am unsure what this checks for
+	call CheckForTilePairCollisions		; I am unsure what this checks for
 	jr c, .notFishing					; but if c ends up set, then I guess we're not fishing
 .tryForRod					; else, continue fishing rod attempts
 	ld b, SUPER_ROD			; load rod into b (for IsItemInBag check)
@@ -48,30 +45,30 @@ TryBikeRod::	; predef
 	call IsItemInBag			; check if item in bag
 	jr nz,.useItem				; if yes, skip to useItem
 .noBike							; else, player does not have bike, so
-	call InitializeBikeRodTextBox	; prepare to write text
-	ld hl,TextNoBikeRod			; load text for NoBike into hl for PrintText
+	call EnableBikeShortcutText	; prepare to write text
+	ld hl,TextNoBike			; load text for NoBike into hl for PrintText
 	call PrintText				; prints the NoBike text
 	jr .cleanUp					; close text and does not return
 .useItem
-	call InitializeBikeRodTextBox	; readies text box, even if empty (prevents npc facing downward on sprite reload bug)
+	call EnableBikeShortcutText	; readies text box
 	call UseItem				; uses the item stored in [wcf91]
 								; this function DOES return from the bike with some edits to item_effects.asm
 .cleanUp
-	call CloseBikeRodTextBox	; closes text box
-	ret
+	call CloseBikeShortcutText	; create an empty textbox that auto-closes
+	ret							; without it, npc sprites are reloaded, facing downwards for a second or two.
 
-TextNoBikeRod:
-	text_far _NoBikeRodText
+TextNoBike:
+	text_far _NoBicycleText
 	text_end
 
-InitializeBikeRodTextBox: ; Gets everything setup to let you display text properly
+EnableBikeShortcutText: ; Gets everything setup to let you display text properly
 	call EnableAutoTextBoxDrawing
 	ld a, 1 ; not 0
 	ld [hSpriteIndexOrTextID], a
 	farcall DisplayTextIDInit
 	ret
 
-CloseBikeRodTextBox: ; Closes the text out properly to prevent glitches
+CloseBikeShortcutText: ; Closes the text out properly to prevent glitches
 	ld a,[hLoadedROMBank]
 	push af
 	jp CloseTextDisplay

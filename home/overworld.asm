@@ -82,7 +82,7 @@ OverworldLoopLessDelay::
 	bit BIT_SELECT, a
 	jr z, .checkIfAButtonIsPressed
 ; if SELECT is pressed
-	farcall TryRodBike
+	farcall TryBikeRod
 	jp OverworldLoop	; without this, falls through to the A button script
 .checkIfAButtonIsPressed
 	bit BIT_A_BUTTON, a
