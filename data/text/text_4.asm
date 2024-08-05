@@ -160,20 +160,20 @@ _PokemonCenterWelcomeText::
 	text "Welcome to our"
 	line "#MON CENTER!"
 
-	para "We heal your"
+	para "We'll heal your"
 	line "#MON back to"
 	cont "perfect health!"
 	prompt
 
-_ShallWeHealYourPokemonText::
-	text "Shall we heal your"
-	line "#MON?"
-	done
+;_ShallWeHealYourPokemonText::
+;	text "Shall we heal your"
+;	line "#MON?"
+;	done
 
-_NeedYourPokemonText::
-	text "OK. We'll need"
-	line "your #MON."
-	done
+;_NeedYourPokemonText::
+;	text "OK. We'll need"
+;	line "your #MON."
+;	done
 
 _PokemonFightingFitText::
 	text "Thank you!"
