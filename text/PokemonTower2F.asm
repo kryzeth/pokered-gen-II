@@ -19,9 +19,9 @@ _PokemonTower2FRivalDefeatedText::
 	prompt
 
 _PokemonTower2FRivalVictoryText::
-	text "<RIVAL>: Well,"
-	line "look at all your"
-	cont "wimpy #MON!"
+	text "Well, look at all"
+	line "your wimpy"
+	cont "#MON!"
 
 	para "Toughen them up a"
 	line "bit more!"

@@ -23,7 +23,7 @@ _CeruleanCityRivalDefeatedText::
 	prompt
 
 _CeruleanCityRivalVictoryText::
-	text "Heh!"
+	text "Hah!"
 	line "You're no match"
 	cont "for my genius!"
 	prompt

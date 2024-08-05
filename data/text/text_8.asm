@@ -1,0 +1,1 @@
+; placeholder for generic defeat text
