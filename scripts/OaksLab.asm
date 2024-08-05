@@ -30,6 +30,7 @@ OaksLab_ScriptPointers:
 	dw_const OaksLabOakGivesPokedexScript,           SCRIPT_OAKSLAB_OAK_GIVES_POKEDEX
 	dw_const OaksLabRivalLeavesWithPokedexScript,    SCRIPT_OAKSLAB_RIVAL_LEAVES_WITH_POKEDEX
 	dw_const OaksLabNoopScript,                      SCRIPT_OAKSLAB_NOOP
+	dw_const OaksLabOakGivesPokeballsScript,		 SCRIPT_OAKSLAB_OAK_GIVES_POKEBALLS
 
 OaksLabDefaultScript:
 	CheckEvent EVENT_OAK_APPEARED_IN_PALLET
@@ -648,11 +649,24 @@ OaksLabRivalLeavesWithPokedexScript:
 	xor a
 	ld [wJoyIgnore], a
 
-	ld a, SCRIPT_OAKSLAB_NOOP
+	;ld a, SCRIPT_OAKSLAB_NOOP					; instead of returning to the do nothing script
+	ld a, SCRIPT_OAKSLAB_OAK_GIVES_POKEBALLS	; skip down to give pokeballs script 
 	ld [wOaksLabCurScript], a
 	ret
 
 OaksLabNoopScript:
+	ret
+
+OaksLabOakGivesPokeballsScript:					; this entire script added to automatically give the free pokeballs
+	call EnableAutoTextBoxDrawing
+	lb bc, POKE_BALL, 5		
+	call GiveItem
+	ld a, TEXT_OAKSLAB_OAK_GIVE_POKEBALLS
+	ldh [hSpriteIndexOrTextID], a
+	call DisplayTextID
+	SetEvent EVENT_GOT_POKEBALLS_FROM_OAK
+	ld a, SCRIPT_OAKSLAB_NOOP
+	ld [wOaksLabCurScript], a
 	ret
 
 OaksLabScript_RemoveParcel:
@@ -751,6 +765,7 @@ OaksLab_TextPointers:
 	dw_const OaksLabOakIHaveARequestText,         TEXT_OAKSLAB_OAK_I_HAVE_A_REQUEST
 	dw_const OaksLabOakMyInventionPokedexText,    TEXT_OAKSLAB_OAK_MY_INVENTION_POKEDEX
 	dw_const OaksLabOakGotPokedexText,            TEXT_OAKSLAB_OAK_GOT_POKEDEX
+	dw_const OaksLabOakReceivedPokeballsText,     TEXT_OAKSLAB_OAK_GIVE_POKEBALLS
 	dw_const OaksLabOakThatWasMyDreamText,        TEXT_OAKSLAB_OAK_THAT_WAS_MY_DREAM
 	dw_const OaksLabRivalLeaveItAllToMeText,      TEXT_OAKSLAB_RIVAL_LEAVE_IT_ALL_TO_ME
 
@@ -976,9 +991,12 @@ OaksLabOak1Text:
 	ld a, [wNumSetBits]
 	cp 2
 	jr c, .check_for_poke_balls
-	CheckEvent EVENT_GOT_POKEDEX
-	jr z, .check_for_poke_balls
-.already_got_poke_balls
+	CheckEvent EVENT_GOT_POKEDEX	; check if player has pokedex yet
+	jr z, .check_for_poke_balls		; if not, then skip down to intro stuff
+.already_got_poke_balls				; else, continue from here
+	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE	; if player beat first Route 22 rival fight
+	jr nz, .give_nugget				; skip down to give nugget script
+.dexRating							; else, continue to rating your pokedex
 	ld hl, .HowIsYourPokedexComingText
 	call PrintText
 	ld a, $1
@@ -989,8 +1007,8 @@ OaksLabOak1Text:
 	ld b, POKE_BALL
 	call IsItemInBag
 	jr nz, .come_see_me_sometimes
-	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
-	jr nz, .give_poke_balls
+;	CheckEvent EVENT_BEAT_ROUTE22_RIVAL_1ST_BATTLE
+;	jr nz, .give_poke_balls
 	CheckEvent EVENT_GOT_POKEDEX
 	jr nz, .mon_around_the_world
 	CheckEventReuseA EVENT_BATTLED_RIVAL_IN_OAKS_LAB
@@ -1018,17 +1036,18 @@ OaksLabOak1Text:
 	call OaksLabScript_RemoveParcel
 	ld a, SCRIPT_OAKSLAB_RIVAL_ARRIVES_AT_OAKS_REQUEST
 	ld [wOaksLabCurScript], a
+
 	jr .done
 .mon_around_the_world
 	ld hl, .PokemonAroundTheWorldText
 	call PrintText
 	jr .done
-.give_poke_balls
-	CheckAndSetEvent EVENT_GOT_POKEBALLS_FROM_OAK
-	jr nz, .come_see_me_sometimes
-	lb bc, POKE_BALL, 5
+.give_nugget		; modified from give_poke_balls script, to provide nugget after first route 22 rival fight
+	CheckAndSetEvent EVENT_GOT_NUGGET_FROM_OAK
+	jr nz, .dexRating	; if already got nugget, return to standard dex rating script
+	lb bc, NUGGET, 1
 	call GiveItem
-	ld hl, .GivePokeballsText
+	ld hl, .GiveNuggetText
 	call PrintText
 	jr .done
 .come_see_me_sometimes
@@ -1059,10 +1078,10 @@ OaksLabOak1Text:
 	text_far _OaksLabOak1PokemonAroundTheWorldText
 	text_end
 
-.GivePokeballsText:
-	text_far _OaksLabOak1ReceivedPokeballsText
+.GiveNuggetText:
+	text_far _OaksLabOakReceivedNuggetText
 	sound_get_key_item
-	text_far _OaksLabGivePokeballsExplanationText
+	text_far _OaksLabGiveNuggetExplanationText
 	text_end
 
 .ComeSeeMeSometimesText:
@@ -1215,6 +1234,12 @@ OaksLabOakMyInventionPokedexText:
 OaksLabOakGotPokedexText:
 	text_far _OaksLabOakGotPokedexText
 	sound_get_key_item
+	text_end
+
+OaksLabOakReceivedPokeballsText:
+	text_far _OaksLabOak1ReceivedPokeballsText
+	sound_get_key_item
+	text_far _OaksLabGivePokeballsExplanationText
 	text_end
 
 OaksLabOakThatWasMyDreamText:

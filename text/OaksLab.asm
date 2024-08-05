@@ -115,15 +115,25 @@ _OaksLabOak1PokemonAroundTheWorldText::
 	done
 
 _OaksLabOak1ReceivedPokeballsText::
-	text "OAK: You can't get"
-	line "detailed data on"
-	cont "#MON by just"
-	cont "seeing them."
+	text "OAK: Hey wait!"
+	line "I was about to..."
 
-	para "You must catch"
-	line "them! Use these"
-	cont "to capture wild"
+	para "Ah well. <RIVAL>"
+	line "will have to buy"
+	cont "these on his own."
+
+	para "Here! Use these"
+	line "to capture wild"
 	cont "#MON."
+
+;	line "detailed data on"
+;	cont "#MON by just"
+;	cont "seeing them."
+;
+;	para "You must catch"
+;	line "them! Use these"
+;	cont "to capture wild"
+;	cont "#MON."
 
 	para "<PLAYER> got 5"
 	line "# BALLs!@"
@@ -136,8 +146,8 @@ _OaksLabGivePokeballsExplanationText::
 	cont "it's fair game."
 
 	para "Just throw a #"
-	line "BALL at it and try"
-	line "to catch it!"
+	line "BALL and try to"
+	cont "catch it!"
 
 	para "This won't always"
 	line "work, though."
@@ -145,6 +155,26 @@ _OaksLabGivePokeballsExplanationText::
 	para "A healthy #MON"
 	line "could escape. You"
 	cont "have to be lucky!"
+	done
+
+_OaksLabOakReceivedNuggetText::
+	text "You are showing"
+	line "some wonderful"
+	cont "potential!"
+
+	para "Take this to make"
+	line "your journey"
+	cont "a bit easier."
+
+	para "<PLAYER> got a"
+	line "NUGGET!@"
+	text_end
+	
+_OaksLabGiveNuggetExplanationText::
+	text_start
+	para "You can sell it"
+	line "for a hefty"
+	cont "profit!"
 	done
 
 _OaksLabOak1ComeSeeMeSometimesText::
@@ -332,8 +362,8 @@ _OaksLabOakThatWasMyDreamText::
 	line "to fulfill my"
 	cont "dream for me!"
 
-	para "Get moving, you"
-	line "two!"
+;	para "Get moving, you"
+;	line "two!"
 
 	para "This is a great"
 	line "undertaking in"

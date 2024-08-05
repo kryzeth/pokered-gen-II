@@ -3,7 +3,8 @@
 ; Pallet Town events
 	const_def
 	const EVENT_FOLLOWED_OAK_INTO_LAB
-	const_skip 2
+	const EVENT_GOT_NUGGET_FROM_OAK		; replaced const_skip 2 with const skip 1
+	const_skip 1
 	const EVENT_HALL_OF_FAME_DEX_RATING
 	const_skip 2
 	const EVENT_PALLET_AFTER_GETTING_POKEBALLS
